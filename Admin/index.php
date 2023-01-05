@@ -33,18 +33,17 @@
         <!-- Left navbar-header -->
         <?php include './components/navbar.php'; ?>
         <!-- Page Content -->
-         <div id="page-wrapper">
+        <div id="page-wrapper">
             <div class="container-fluid">
                 <?php include './components/path.php'; ?>
             </div>
-         </div>
-                <!-- .right-sidebar -->
-                <?php include './components/sidebar.php'; ?>
-            </div>
-            <!-- /.container-fluid -->
-            <?php include './components/footer.php'; ?>
         </div>
-        <!-- /#page-wrapper -->
+        <!-- .right-sidebar -->
+        <?php include './components/sidebar.php'; ?>
+    <!-- /.container-fluid -->
+    <?php include './components/footer.php'; ?>
+    </div>
+    <!-- /#page-wrapper -->
     </div>
     <!-- /#wrapper -->
     <!-- jQuery -->
@@ -72,7 +71,7 @@
     <script src="../plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
     <script src="../plugins/bower_components/jquery-sparkline/jquery.charts-sparkline.js"></script>
     <script src="../plugins/bower_components/toast-master/js/jquery.toast.js"></script>
-    
+
     <script type="text/javascript">
         $(document).ready(function() {
             $.toast({
@@ -86,7 +85,8 @@
             })
         });
     </script>
- </body>
- <!--Style Switcher -->
- <script src="../plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
+</body>
+<!--Style Switcher -->
+<script src="../plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
+
 </html>

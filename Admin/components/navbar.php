@@ -6,8 +6,8 @@
         <ul class="nav" id="side-menu">
             <li class="nav-small-cap m-t-10">--- Main Menu</li>
             <li> <a href="index.php" class="waves-effect active"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu"> Dashboard </a></li>
-            <li><a href="#" class="waves-effect"><i data-icon="p" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Products</a></li>
-            <li><a href="#" class="waves-effect"><i data-icon="p" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Manage User</a></li>
+            <li><a href="/Admin/product.php" class="waves-effect"><i data-icon="p" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Products</a></li>
+            <li><a href="/Admin/users.php" class="waves-effect"><i data-icon="p" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Manage User</a></li>
             <li><a href="#" class="waves-effect"><i data-icon="p" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Orders</a></li>
             <li><a href="#" class="waves-effect"><i data-icon="p" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Messages</a></li>
             <li><a href="#" class="waves-effect"><i data-icon="p" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Category</a></li>

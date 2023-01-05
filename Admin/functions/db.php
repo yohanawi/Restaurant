@@ -3,7 +3,7 @@
     $db_host = 'localhost';
     $db_user = 'root';
     $db_pass = '';
-    $db_name = 'restaurant';
+    $db_name = 'restaurants';
 
     global $connection;
     $connection = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
@@ -11,7 +11,7 @@
         die("Cannot Establish A Secure Connection To The Host Server At The Moment!");
     }
     try {
-        $db = new PDO('mysql:dbhost=localhost;dbname=restaurant;charset=utf8', 'root', '');
+        $db = new PDO('mysql:dbhost=localhost;dbname=restaurants;charset=utf8', 'root', '');
     } catch (Exception $e) {
 
         die('Cannot Establish A Secure Connection To The Host Server At The Moment!');
