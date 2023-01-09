@@ -1,3 +1,13 @@
+<?php
+require_once "functions/db.php"; //databse connection
+
+$sql_category = "SELECT * FROM category";
+$query_category = mysqli_query($connection, $sql_category);
+$sql_user = "SELECT * FROM user";
+$query_user = mysqli_query($connection, $sql_user);
+$sql_products = "SELECT * FROM product";
+$query_products = mysqli_query($connection, $sql_products);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,6 +34,8 @@
     <link href="css/style.css" rel="stylesheet">
     <!-- color CSS -->
     <link href="css/colors/blue.css" id="theme" rel="stylesheet">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 
 <body>
@@ -36,6 +48,116 @@
         <div id="page-wrapper">
             <div class="container-fluid">
                 <?php include './components/path.php'; ?>
+                <div class="row">
+                    <div class="col-md-12 col-lg-12 col-sm-12">
+                        <div class="white-box">
+                            <div class="row row-in">
+                                <div class="col-lg-3 col-sm-6 row-in-br">
+                                    <div class="col-in row">
+                                        <div class="col-md-6 col-sm-6 col-xs-6"> <i data-icon="E" class="linea-icon linea-basic"></i>
+                                            <h5 class="text-muted vb">Orders</h5>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                            <h3 class="counter text-right m-t-15 text-danger"><?php echo mysqli_num_rows($query_category); ?></h3>
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"> <span class="sr-only">40% Complete (success)</span> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-sm-6 row-in-br  b-r-none">
+                                    <div class="col-in row">
+                                        <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic" data-icon="&#xe01b;"></i>
+                                            <h5 class="text-muted vb">Products</h5>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                            <h3 class="counter text-right m-t-15 text-megna"><?php echo mysqli_num_rows($query_products); ?></h3>
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-megna" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"> <span class="sr-only">40% Complete (success)</span> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-sm-6 row-in-br">
+                                    <div class="col-in row">
+                                        <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic" data-icon="&#xe00b;"></i>
+                                            <h5 class="text-muted vb">Messages</h5>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                            <h3 class="counter text-right m-t-15 text-primary"><?php echo mysqli_num_rows($query_category); ?></h3>
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"> <span class="sr-only">40% Complete (success)</span> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-sm-6  b-0">
+                                    <div class="col-in row">
+                                        <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic" data-icon="&#xe016;"></i>
+                                            <h5 class="text-muted vb">Users</h5>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                            <h3 class="counter text-right m-t-15 text-success"><?php echo mysqli_num_rows($query_user); ?></h3>
+                                        </div>
+                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"> <span class="sr-only">40% Complete (success)</span> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                <div class="col-md-12 col-lg-6 col-sm-12">
+                        <div class="white-box">
+                            <div id="myChart2" style="width:100%; max-width:600px; height:500px;"></div>
+                            <?php
+                            $chkresults2 = mysqli_query($connection, "SELECT date(date) AS date, COUNT(*) AS id FROM user GROUP BY date(date)");
+                            ?>
+                            <script>
+                                google.charts.load('current', {
+                                    packages: ['corechart']
+                                });
+                                google.charts.setOnLoadCallback(drawChart2);
+
+                                function drawChart2() {
+                                    // Set Data
+                                    var data = google.visualization.arrayToDataTable([
+                                        ['Date', 'Users'],
+                                        <?php
+                                        while ($row = mysqli_fetch_assoc($chkresults2)) {
+                                            echo "['" . $row["date"] . "'," . $row["id"] . "],";
+                                        }
+                                        ?>
+                                    ]);
+                                    // Set OptionsS
+                                    var options = {
+                                        title: 'Users',
+                                        hAxis: {
+                                            title: 'Date'
+                                        },
+                                        vAxis: {
+                                            title: 'ID'
+                                        },
+                                        legend: 'none'
+                                    };
+                                    // Draw
+                                    var chart = new google.visualization.LineChart(document.getElementById('myChart2'));
+                                    chart.draw(data, options);
+                                }
+                            </script>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- .right-sidebar -->

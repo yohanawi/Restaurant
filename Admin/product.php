@@ -2,8 +2,10 @@
 
 require_once "functions/db.php";
 
-$sql_user = "SELECT * FROM user";
-$query_user = mysqli_query($connection, $sql_user);
+$sql_product = "SELECT * FROM product";
+$query_product = mysqli_query($connection, $sql_product);
+$sql_category = 'SELECT * FROM category';
+$query_category = mysqli_query($connection, $sql_category);
 ?>
 
 <!DOCTYPE html>
@@ -30,6 +32,8 @@ $query_user = mysqli_query($connection, $sql_user);
     <link href="css/style.css" rel="stylesheet">
     <!-- color CSS -->
     <link href="css/colors/blue.css" id="theme" rel="stylesheet">
+    <!--admin css-->
+    <link href="css/admin-css.css" rel="stylesheet">
 </head>
 
 <body>
@@ -53,22 +57,46 @@ $query_user = mysqli_query($connection, $sql_user);
                 </div>
                 <!-- /row -->
                 <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-sm-6">
                         <div class="white-box">
                             <section class="add-products">
-                                <form action="" method="POST" enctype="multipart/form-data">
-                                    <h3>add product</h3>
-                                    <input type="text" required placeholder="enter product name" name="name" maxlength="100" class="box">
-                                    <input type="number" min="0" max="9999999999" required placeholder="enter product price" name="price" onkeypress="if(this.value.length == 10) return false;" class="box">
-                                    <select name="category" class="box" required>
-                                        <option value="" disabled selected>select category --</option>
-                                        <option value="main dish">main dish</option>
-                                        <option value="fast food">fast food</option>
-                                        <option value="drinks">drinks</option>
-                                        <option value="desserts">desserts</option>
-                                    </select>
-                                    <input type="file" name="image" class="box" accept="image/jpg, image/jpeg, image/png, image/webp" required>
-                                    <input type="submit" value="add product" name="add_product" class="btn">
+                                <form action="functions/new.php" method="POST" enctype="multipart/form-data">
+                                    <h3>Add Product</h3>
+                                    <div class="inputGroup">
+                                        <input type="text" required="" name="name" maxlength="100">
+                                        <label for="name">enter product name</label>
+                                    </div>
+                                    <div class="inputGroup">
+                                        <input type="number" min="0" max="9999999999" required="" name="price" onkeypress="if(this.value.length == 10) return false;">
+                                        <label for="price">enter product price</label>
+                                    </div>
+                                    <div class="inputGroup">
+                                        <textarea type="text" required="" name="description"></textarea>
+                                        <label for="description">enter product description</label>
+                                    </div>
+                                    <?php
+                                        $options = "";
+                                        while ($row2 = mysqli_fetch_array($query_category)) {
+                                            $options = $options . "<option>$row2[1]</option>";
+                                        }
+                                        ?>
+                                    <div class="inputGroup">
+                                        <select name="category" class="box" required>
+                                            <option value="" disabled selected>select category --</option>
+                                            <?php echo $options; ?>
+                                        </select>
+                                    </div>
+                                    <div class="inputGroup">
+                                        <input type="file" name="image" class="box" accept="image/jpg, image/jpeg, image/png, image/webp" required>
+                                    </div>
+                                    <button type="submit" value="add product" name="add_product">
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                                <path fill="none" d="M0 0h24v24H0z"></path>
+                                                <path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"></path>
+                                            </svg> Add product
+                                        </span>
+                                    </button>
                                 </form>
                             </section>
                         </div>
