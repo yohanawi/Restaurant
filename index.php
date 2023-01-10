@@ -19,6 +19,88 @@
 
 <body>
     <?php include 'Components/Header.php'; ?>
+
+    <section class="home" id="home">
+
+        <div class="swiper home-slider">
+
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide">
+                    <div class="box" style="background: url(images/home-bg-1.jpg) no-repeat;">
+                        <div class="content">
+                            <span>never stop</span>
+                            <h3>exploring</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit unde ex molestias soluta consequatur saepe aliquam, excepturi delectus consequuntur minus!</p>
+                            <a href="#" class="btn">get started</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="box second" style="background: url(images/home-bg-2.jpg) no-repeat;">
+                        <div class="content">
+                            <span>make tour</span>
+                            <h3>amazing</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit unde ex molestias soluta consequatur saepe aliquam, excepturi delectus consequuntur minus!</p>
+                            <a href="#" class="btn">get started</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="box" style="background: url(images/home-bg-3.jpg) no-repeat;">
+                        <div class="content">
+                            <span>explore the</span>
+                            <h3>new world</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit unde ex molestias soluta consequatur saepe aliquam, excepturi delectus consequuntur minus!</p>
+                            <a href="#" class="btn">get started</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+
+        </div>
+
+    </section>
+
+    <!-- home section ends -->
+    <!-- newsletter section  -->
+
+    <section class="newsletter">
+
+        <div class="content">
+            <h1 class="heading">subscirbe now</h1>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam ipsam repellat nostrum esse officiis unde quisquam corporis doloremque adipisci similique!</p>
+            <form action="">
+                <input type="email" name="" placeholder="enter your email" id="" class="email">
+                <input type="submit" value="subscirbe" class="btn">
+            </form>
+        </div>
+
+    </section>
+
+    <section class="clients">
+
+        <div class="swiper clients-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide silde"><img src="images/client-logo-1.png" alt=""></div>
+                <div class="swiper-slide silde"><img src="images/client-logo-2.png" alt=""></div>
+                <div class="swiper-slide silde"><img src="images/client-logo-3.png" alt=""></div>
+                <div class="swiper-slide silde"><img src="images/client-logo-4.png" alt=""></div>
+            </div>
+        </div>
+
+    </section>
+    <?php include 'Components/Footer.php'; ?>
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+    <!-- custom js file link  -->
+    <script src="/Js/js.js"></script>
 </body>
 
 </html>
