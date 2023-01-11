@@ -1,24 +1,3 @@
-<?php
-include './Components/connection.php';
-
-if (isset($_POST['send'])) {
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $subject = $_POST['subject'];
-    $msg = $_POST['msg'];
-    //-- Insert Data Into DB --//
-    $sql = "INSERT INTO messages (name,email,subject,msg) 
-        VALUES (?,?,?,?)";
-    $stmt = $db->prepare($sql);
-    try {
-        $stmt->execute([$name, $email, $subject, $msg]);
-        header('Location:../Contact.php?success');
-    } catch (Exception $e) {
-        $e->getMessage();
-        echo "Error";
-    }
-}
-?>
 <!DOCTYPE html>
 <html>
 

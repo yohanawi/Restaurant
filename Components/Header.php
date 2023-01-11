@@ -4,13 +4,14 @@
     <nav class="navbar">
         <div id="nav-close" class="fas fa-times"></div>
         <a href="/About.php">About</a>
-        <a href="#shop">Menu</a>
-        <a href="#packages">Category</a>
+        <a href="/Menu.php">Menu</a>
+        <a href="/Category.php">Category</a>
+        <a href="/Order.php">Orders</a>
         <a href="/Contact.php">Contact</a>
     </nav>
     <div class="icons">
         <div id="menu-btn" class="fas fa-bars"></div>
-        <a href="#" class="fas fa-shopping-cart" style="width: 24px; margin-left: 250px"></a>
+        <a href="/Cart.php" class="fas fa-shopping-cart" style="width: 24px; margin-left: 150px"></a>
         <button class="btn-sign" onclick="window.location='./Login.php';"> Sign in</button>
         <div id="search-btn"></div>
         <!--<button class="btn-sign"> Button</button>-->
