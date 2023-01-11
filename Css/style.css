@@ -355,8 +355,8 @@ button:hover:after {
   position: relative;
   display: flex;
   width: 1314px;
-  height: 779px;
-  margin-top: 100px;
+  height: 600px;
+  margin-top: 0px;
 }
 
 .about-content .image-about .second {
@@ -875,3 +875,373 @@ button:hover:after {
 
 /*menu page*/
 /*order page*/
+/*home page*/
+.hero .slide {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap-reverse;
+  gap: 1rem;
+  margin-top: 45px;
+  margin-bottom: 4rem;
+}
+
+.hero .slide .image {
+  flex: 1 1 20rem;
+}
+
+.hero .slide .image img {
+  width: 40%;
+  float: right;
+}
+
+.hero .slide .content {
+  flex: 1 1 40rem;
+  text-align: center;
+  margin-left: -750px;
+}
+
+.hero .slide .content span {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 29px;
+  color: #5C6574;
+}
+
+.hero .slide .content h3 {
+  margin-top: -75px;
+  color: var(--black);
+  text-transform: capitalize;
+  font-family: 'David Libre';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 65px;
+  color: #101A24;
+}
+
+.btn-menu {
+  padding: 8px 25px;
+  border-radius: 8px;
+  background: #101A24;
+  font-family: 'David Libre';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 29px;
+  text-align: center;
+  color: #FFFFFF;
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.btn-book {
+  padding: 8px 25px;
+  border-radius: 8px;
+  font-family: 'David Libre';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 29px;
+  color: #FFFFFF;
+  background: #EA6D27;
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.swiper-pagination-bullet-active {
+  background-color: var(--yellow);
+}
+
+/*banner*/
+.banner-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 75%;
+  margin-left: 200px;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background: rgba(222, 218, 218, 0.98);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 25px 75px;
+}
+
+.banner-container .banner {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 42rem;
+  flex: 1 1 42rem;
+  overflow: hidden;
+  height: 30rem;
+  width: 50%;
+  position: relative;
+}
+
+.banner-container .banner img {
+  width: 50%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.banner-container .banner:hover img {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+.banner-container .banner .content {
+  position: absolute;
+  top: 50%;
+  margin-left: -250px;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.banner-container .banner .content span {
+  font-size: 2rem;
+  color: #666;
+}
+
+.banner-container .banner .content h3 {
+  font-size: 3.2rem;
+  color: #130f40;
+  padding-top: .5rem;
+}
+
+.banner-container .banner .hat {
+  position: absolute;
+  width: 157.52px;
+  height: 81.66px;
+  left: 38px;
+  top: 5px;
+  transform: rotate(-33.95deg);
+}
+
+.btn-banner {
+  padding: 12px 30px;
+  border-radius: 50px;
+  border: 0;
+  background-color: #D21200;
+  box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  color: #fff;
+  font-size: 20px;
+  transition: all .5s ease;
+}
+
+.btn-banner:hover {
+  letter-spacing: 3px;
+  background-color: hsl(261deg 80% 48%);
+  color: hsl(0, 0%, 100%);
+  box-shadow: rgb(93 24 220) 0px 7px 29px 0px;
+}
+
+.btn-banner:active {
+  letter-spacing: 3px;
+  background-color: hsl(261deg 80% 48%);
+  color: hsl(0, 0%, 100%);
+  box-shadow: rgb(93 24 220) 0px 0px 0px 0px;
+  transform: translateY(10px);
+  transition: 100ms;
+}
+
+.category-content,
+.product-content h1 {
+  font-family: 'David Libre';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 65px;
+  text-align: center;
+  color: #101A24;
+
+}
+
+.category-content,
+.product-content p {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 36px;
+  text-align: center;
+  color: #282828;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: var(--main-color);
+}
+
+.category-content .slide {
+  margin-bottom: 5rem;
+  --bg: #f7f7f8;
+  --hover-bg: #FFE5F4;
+  --hover-text: #E50087;
+  max-width: 23ch;
+  text-align: center;
+  background: var(--bg);
+  padding: 1.5em;
+  padding-block: 1em;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  transition: .3s cubic-bezier(.6, .4, 0, 1), transform .15s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+
+.category-content .slide:hover {
+  background-color: var(--hover-bg);
+}
+
+.category-content .slide:hover img {
+  transform: scale(1.5);
+}
+
+.category-content .slide:hover h3 {
+  color: var(--white);
+}
+
+.category-content .slide img {
+  height: 15rem;
+  width: 100%;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+  user-select: none;
+}
+
+.category-content .slide h3 {
+  color: var(--black);
+  user-select: none;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+  text-align: center;
+  color: #101A24;
+}
+
+.product-card {
+  width: 190px;
+  height: auto;
+}
+
+.product-card img {
+  width: 150%;
+  margin-left: -45px;
+}
+
+.product-card .product-card-price {
+  background-color: #000000;
+  position: absolute;
+  --size: 40px;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  transition: transform .2s ease;
+  margin-top: -190px;
+  margin-left: 140px;
+}
+
+.product-card .product-card-price p {
+  position: absolute;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 6px;
+  line-height: 26px;
+  text-align: center;
+  color: #FFFFFF;
+  margin-left: 5px;
+  margin-top: 7px;
+}
+
+.product-card .product-cover {
+  background-color: #fff;
+  margin-top: -100px;
+  width: 180px;
+  margin-left: 10px;
+  border-radius: 25px 25px 10px 10px;
+}
+
+.product-card .product-cover h1 {
+  font-family: 'David Libre';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+  text-align: center;
+  color: #101A24;
+  padding-top: 80px;
+}
+
+.product-card .product-cover p {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 24px;
+  text-align: center;
+  color: #5C6574;
+  margin-bottom: 5px;
+}
+
+.product-content .slide {
+  margin-bottom: 35px;
+}
+
+.deal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  gap: 1rem;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+ }
+
+.deal .image {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 42rem;
+  flex: 1 1 42rem;
+  margin-left: 150px;
+}
+
+.deal .image img {
+  width: 40rem;
+}
+
+.deal .content {
+  position: absolute;
+  flex: 1 1 42rem;
+  -webkit-box-flex: 1;
+   -ms-flex: 1 1 42rem;
+   margin-top: 2850px;
+}
+
+.deal .content span {
+  color: #eb4d4b;
+  font-size: 1.7rem;
+}
+
+.deal .content h3 {
+  color: #130f40;
+  font-size: 3rem;
+  padding: .5rem 0;
+}
+
+.deal .content p {
+  color: #666;
+  font-size: 2rem;
+}

@@ -75,11 +75,11 @@ $query_category = mysqli_query($connection, $sql_category);
                                         <label for="description">enter product description</label>
                                     </div>
                                     <?php
-                                        $options = "";
-                                        while ($row2 = mysqli_fetch_array($query_category)) {
-                                            $options = $options . "<option>$row2[1]</option>";
-                                        }
-                                        ?>
+                                    $options = "";
+                                    while ($row2 = mysqli_fetch_array($query_category)) {
+                                        $options = $options . "<option>$row2[1]</option>";
+                                    }
+                                    ?>
                                     <div class="inputGroup">
                                         <select name="category" class="box" required>
                                             <option value="" disabled selected>select category --</option>
@@ -98,6 +98,41 @@ $query_category = mysqli_query($connection, $sql_category);
                                         </span>
                                     </button>
                                 </form>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="white-box">
+                            <section class="show-products">
+                                <h3 class="heading">products added(<b style="color: orange;"><?php echo mysqli_num_rows($query_product); ?></b>)</h3>
+                                <div class="box-container">
+                                    <?php
+
+                                    if (mysqli_num_rows($query_product) == 0) {
+                                        echo '<p class="empty">no products added yet!</p>';
+                                    } else {
+                                        while ($result_product = mysqli_fetch_array($query_product)) {
+                                    ?>
+                                            <div class="box">
+                                                <img src="/uploaded_img/" <?php echo $result_product['image']; ?> alt="">
+                                                <div class="name"><?php echo $result_product['name']; ?></div>
+                                                <div class="price">Rs.<span><?php echo $result_product['price']; ?>></span>/-</div>
+                                                <div class="size" style="font-size: 14px;"><?php echo $result_product['category']; ?></div>
+                                                <div class="details"><span><?= $result_product['description']; ?></span></div>
+                                                <div class="flex-btn">
+                                                    <a href="update_product.php?update=<?php echo $result_product['id']; ?>" class="option-btn">update</a>
+                                                    <a href="product.php echo $result_product['id']; ?>" class="delete-btn" onclick="return confirm('delete this product?');">delete</a>
+                                                </div>
+                                            </div>
+                                    <?php
+                                        }
+                                    }
+
+
+                                    ?>
+                                </div>
                             </section>
                         </div>
                     </div>

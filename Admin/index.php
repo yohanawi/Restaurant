@@ -117,7 +117,7 @@ $query_products = mysqli_query($connection, $sql_products);
                     </div>
                 </div>
                 <div class="row">
-                <div class="col-md-12 col-lg-6 col-sm-12">
+                    <div class="col-md-12 col-lg-6 col-sm-12">
                         <div class="white-box">
                             <div id="myChart2" style="width:100%; max-width:600px; height:500px;"></div>
                             <?php
@@ -162,8 +162,8 @@ $query_products = mysqli_query($connection, $sql_products);
         </div>
         <!-- .right-sidebar -->
         <?php include './components/sidebar.php'; ?>
-    <!-- /.container-fluid -->
-    <?php include './components/footer.php'; ?>
+        <!-- /.container-fluid -->
+        <?php include './components/footer.php'; ?>
     </div>
     <!-- /#page-wrapper -->
     </div>
