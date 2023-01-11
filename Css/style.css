@@ -596,3 +596,240 @@ button:hover:after {
 }
 
 /*end contact*/
+/*login page*/
+.card {
+  width: auto;
+  height: auto;
+  border-radius: 32px;
+  background: #D9D9D9;
+  box-shadow: 15px 15px 30px #bebebe,
+    -15px -15px 30px #ffffff;
+}
+
+.card .right-box {
+  height: 500px;
+  padding: 20px;
+  background-image: url(/Asset/group-hUd.png);
+  background-size: 40%;
+  background-position-y: center;
+  background-repeat: no-repeat;
+  background-position-x: 100px;
+}
+
+.card .right-box h2 {
+  font-family: 'David Libre';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 65px;
+  color: #101A24;
+  margin-top: 50px;
+  margin-left: 25px;
+}
+
+.card .right-box .log {
+  width: 292.56px;
+  height: 51px;
+  left: 253px;
+  top: 455px;
+  padding-top: 15px;
+  margin-left: 42px;
+}
+
+.card .right-box .log i {
+  background: #EA6D27;
+}
+
+.card .log p {
+  width: 258.84px;
+  height: 51px;
+  left: 286.72px;
+  top: 455px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 21px;
+  color: #5C6574;
+}
+
+.card .link {
+  position: absolute;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  color: #080066;
+  margin-top: 200px;
+  text-align: center;
+  left: 300px;
+
+}
+
+.card .vl {
+  position: absolute;
+  width: 250px;
+  height: 0px;
+  left: 620px;
+  top: 421px;
+  border: 1px solid #000000;
+  transform: rotate(-90deg);
+}
+
+.card .left-box {
+  position: absolute;
+  left: 830px;
+  top: 300px;
+}
+
+
+.card .left-box form {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 42rem;
+  flex: 1 1 42rem;
+  padding: 2rem;
+  border: none;
+  border-radius: .5rem;
+  width: 400px;
+
+}
+
+.card .left-box form .inputBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.card .left-box form .inputBox input {
+  width: 100%;
+  border-radius: 20px;
+}
+
+.card .left-box form .inputBox input {
+  border: 0.1rem solid rgba(0, 0, 0, 0.3);
+  border-radius: .5rem;
+  padding: 1rem 1.2rem;
+  font-family: 'Inter';
+  font-style: normal;
+  color: #101A24;
+  font-size: 16px;
+  border-radius: 10px;
+  text-transform: none;
+  margin: .7rem 0;
+}
+
+/*register page*/
+.card .right-box-R {
+  height: 500px;
+  padding: 20px;
+  background-image: url(/Asset/group-hUd.png);
+  background-size: 40%;
+  background-position-y: center;
+  background-repeat: no-repeat;
+  background-position-x: 650px;
+}
+
+.card .right-box-R h2 {
+  font-family: 'David Libre';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 65px;
+  color: #101A24;
+  margin-top: 50px;
+  margin-left: 25px;
+  float: right;
+}
+
+.card .right-box-R .log {
+  position: absolute;
+  width: 292.56px;
+  height: 51px;
+  left: 853px;
+  top: 355px;
+  padding-top: 15px;
+  margin-left: 52px;
+}
+
+.card .right-box-R .log i {
+  background: #EA6D27;
+}
+
+.card .log p {
+  width: 258.84px;
+  height: 51px;
+  left: 286.72px;
+  top: 455px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 21px;
+  color: #5C6574;
+}
+
+.card .link-R {
+  position: absolute;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  color: #080066;
+  margin-top: 200px;
+  top: 400px;
+  text-align: center;
+  left: 900px;
+
+}
+
+.card .left-box-R {
+  position: absolute;
+  left: 230px;
+  top: 280px;
+}
+
+
+.card .left-box-R form {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 42rem;
+  flex: 1 1 42rem;
+  padding: 2rem;
+  border: none;
+  border-radius: .5rem;
+  width: 400px;
+
+}
+
+.card .left-box-R form .inputBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.card .left-box-R form .inputBox input {
+  width: 100%;
+  border-radius: 20px;
+}
+
+.card .left-box-R form .inputBox input {
+  border: 0.1rem solid rgba(0, 0, 0, 0.3);
+  border-radius: .5rem;
+  padding: 1rem 1.2rem;
+  font-family: 'Inter';
+  font-style: normal;
+  color: #101A24;
+  font-size: 16px;
+  border-radius: 10px;
+  text-transform: none;
+  margin: .7rem 0;
+}
