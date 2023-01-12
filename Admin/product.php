@@ -1,11 +1,33 @@
 <?php
+/* DATABASE CONNECTION*/
+$db_name = 'mysql:host=localhost;dbname=restaurants';
+$user_name = 'root';
+$user_password = '';
+
+$conn = new PDO($db_name, $user_name, $user_password);
 
 require_once "functions/db.php";
+
 
 $sql_product = "SELECT * FROM product";
 $query_product = mysqli_query($connection, $sql_product);
 $sql_category = 'SELECT * FROM category';
 $query_category = mysqli_query($connection, $sql_category);
+
+
+if (isset($_GET['delete'])) {
+
+    $delete_id = $_GET['delete'];
+    $delete_product_image = $conn->prepare("SELECT * FROM `product` WHERE id = ?");
+    $delete_product_image->execute([$delete_id]);
+    $fetch_delete_image = $delete_product_image->fetch(PDO::FETCH_ASSOC);
+    /*unlink('../uploaded_img/' . $fetch_delete_image['image']);*/
+    $delete_product = $conn->prepare("DELETE FROM `product` WHERE id = ?");
+    $delete_product->execute([$delete_id]);
+    $delete_cart = $conn->prepare("DELETE FROM `cart` WHERE pid = ?");
+    $delete_cart->execute([$delete_id]);
+    header('location:product.php');
+ }
 ?>
 
 <!DOCTYPE html>
@@ -109,28 +131,27 @@ $query_category = mysqli_query($connection, $sql_category);
                                 <h3 class="heading">products added(<b style="color: orange;"><?php echo mysqli_num_rows($query_product); ?></b>)</h3>
                                 <div class="box-container">
                                     <?php
-
-                                    if (mysqli_num_rows($query_product) == 0) {
-                                        echo '<p class="empty">no products added yet!</p>';
-                                    } else {
-                                        while ($result_product = mysqli_fetch_array($query_product)) {
+                                    $select_product = $conn->prepare("SELECT * FROM `product`");
+                                    $select_product->execute();
+                                    if ($select_product->rowCount() > 0) {
+                                        while ($fetch_product = $select_product->fetch(PDO::FETCH_ASSOC)) {
                                     ?>
                                             <div class="box">
-                                                <img src="/uploaded_img/" <?php echo $result_product['image']; ?> alt="">
-                                                <div class="name"><?php echo $result_product['name']; ?></div>
-                                                <div class="price">Rs.<span><?php echo $result_product['price']; ?>></span>/-</div>
-                                                <div class="size" style="font-size: 14px;"><?php echo $result_product['category']; ?></div>
-                                                <div class="details"><span><?= $result_product['description']; ?></span></div>
+                                                <img src="../uploaded_img/<?= $fetch_product['image']; ?>" alt="">
+                                                <div class="name"><?= $fetch_product['name']; ?></div>
+                                                <div class="price">Rs.<span><?= $fetch_product['price']; ?></span>/-</div>
+                                                <div class="category" style="font-size: 14px;"><?= $fetch_product['category']; ?></div>
+                                                <div class="description"><span><?= $fetch_product['description']; ?></span></div>
                                                 <div class="flex-btn">
-                                                    <a href="update_product.php?update=<?php echo $result_product['id']; ?>" class="option-btn">update</a>
-                                                    <a href="product.php echo $result_product['id']; ?>" class="delete-btn" onclick="return confirm('delete this product?');">delete</a>
+                                                    <a href="update_product.php?update=<?= $fetch_product['id']; ?>" class="option-btn">update</a>
+                                                    <a href="product.php?delete=<?= $fetch_product['id']; ?>" class="delete-btn" onclick="return confirm('delete this product?');">delete</a>
                                                 </div>
                                             </div>
                                     <?php
                                         }
+                                    } else {
+                                        echo '<p class="empty">no products added yet!</p>';
                                     }
-
-
                                     ?>
                                 </div>
                             </section>
@@ -171,6 +192,7 @@ $query_category = mysqli_query($connection, $sql_category);
     <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
     <!-- end - This is for export functionality only -->
+
     <!--Style Switcher -->
     <script src="../plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
 </body>

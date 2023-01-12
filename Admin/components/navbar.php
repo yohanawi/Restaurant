@@ -9,7 +9,7 @@
             <li><a href="/Admin/product.php" class="waves-effect"><i data-icon="p" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Products</a></li>
             <li><a href="/Admin/users.php" class="waves-effect"><i data-icon="p" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Manage User</a></li>
             <li><a href="#" class="waves-effect"><i data-icon="p" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Orders</a></li>
-            <li><a href="#" class="waves-effect"><i data-icon="p" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Messages</a></li>
+            <li><a href="/Admin/message.php" class="waves-effect"><i data-icon="p" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Messages</a></li>
             <li><a href="/Admin/category.php" class="waves-effect"><i data-icon="p" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Category</a></li>
             <li class="nav-small-cap m-t-10">--- Reservation</li>
             <li> <a href="#" class="waves-effect"><i data-icon="p" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Reservations<span class="fa arrow"></span></span></a>

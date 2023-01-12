@@ -7,6 +7,8 @@ $sql_user = "SELECT * FROM user";
 $query_user = mysqli_query($connection, $sql_user);
 $sql_products = "SELECT * FROM product";
 $query_products = mysqli_query($connection, $sql_products);
+$sql_message = "SELECT * FROM messages";
+$query_message = mysqli_query($connection, $sql_message);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -88,7 +90,7 @@ $query_products = mysqli_query($connection, $sql_products);
                                             <h5 class="text-muted vb">Messages</h5>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <h3 class="counter text-right m-t-15 text-primary"><?php echo mysqli_num_rows($query_category); ?></h3>
+                                            <h3 class="counter text-right m-t-15 text-primary"><?php echo mysqli_num_rows($query_message); ?></h3>
                                         </div>
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <div class="progress">
