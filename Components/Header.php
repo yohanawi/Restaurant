@@ -10,8 +10,13 @@
         <a href="/Contact.php">Contact</a>
     </nav>
     <div class="icons">
+        <?php
+        $count_cart_items = $conn->prepare("SELECT * FROM `cart`");
+    
+        $total_cart_items = $count_cart_items->rowCount();
+        ?>
         <div id="menu-btn" class="fas fa-bars"></div>
-        <a href="/Cart.php" class="fas fa-shopping-cart" style="width: 24px; margin-left: 150px"></a>
+        <a href="/Cart.php" class="fas fa-shopping-cart" style="width: 24px; margin-left: 150px"><span>(<?= $total_cart_items; ?>)</span></a>
         <button class="btn-sign" onclick="window.location='./Login.php';"> Sign in</button>
         <div id="search-btn"></div>
         <!--<button class="btn-sign"> Button</button>-->

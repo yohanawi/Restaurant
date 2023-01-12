@@ -1,3 +1,6 @@
+<?php
+include './Components/connection.php';
+?>
 <!DOCTYPE html>
 <html>
 
@@ -18,7 +21,6 @@
 
 <body>
     <?php include 'Components/Header.php'; ?>
-
     <section class="page">
         <div class="row">
             <div class="page-heading">
@@ -26,11 +28,33 @@
                 <p>All our best meals in one delicious snap</p>
             </div>
         </div>
-        
+        <div class="box-container">
+            <?php
+            $select_products = $conn->prepare("SELECT * FROM `product`");
+            $select_products->execute();
+            if ($select_products->rowCount() > 0) {
+                while ($fetch_products = $select_products->fetch(PDO::FETCH_ASSOC)) {
+            ?>
+                    <div class="pro-card">
+                        <div class="pro-card-img"><img src="uploaded_img/<?= $fetch_products['image']; ?>"></div>
+                        <div class="pro-card-info">
+                            <p class="pro-text-title"><?= $fetch_products['name']; ?></p>
+                            <p class="pro-text-body"><?= $fetch_products['description']; ?></p>
+                        </div>
+                        <div class="pro-card-footer">
+                            <span class="pro-text-title"><?= $fetch_products['price']; ?></span>
+                            <div class="pro-card-button">
+                                <button type="submit" name="add_to_cart" class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
+                            </div>
+                        </div>
+                    </div>
+            <?php
+                }
+            } else {
+                echo '<p class="empty">no products added yet!</p>';
+            }
+            ?>
+        </div>
     </section>
-
     <?php include 'Components/Footer.php'; ?>
-    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-    <!-- custom js file link  -->
-    <script src="/Js/js.js"></script>
 </body>

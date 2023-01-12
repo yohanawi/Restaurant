@@ -14,6 +14,36 @@ $query_product = mysqli_query($connection, $sql_product);
 $sql_category = 'SELECT * FROM category';
 $query_category = mysqli_query($connection, $sql_category);
 
+if (isset($_POST['add_product'])) {
+    $name = $_POST['name'];
+    $name = filter_var($name, FILTER_SANITIZE_STRING);
+    $price = $_POST['price'];
+    $price = filter_var($price, FILTER_SANITIZE_STRING);
+    $description = $_POST['description'];
+    $description = filter_var($description, FILTER_SANITIZE_STRING);
+    $category = $_POST['category'];
+    $category = filter_var($category, FILTER_SANITIZE_STRING);
+    $image = $_FILES['image']['name'];
+    $image = filter_var($image, FILTER_SANITIZE_STRING);
+    $image_size = $_FILES['image']['size'];
+    $image_tmp_name = $_FILES['image']['tmp_name'];
+    $image_folder = '../uploaded_img/'.$image;
+    $select_product = $conn->prepare("SELECT * FROM `product` WHERE name = ?");
+    $select_product->execute([$name]);
+
+    if ($select_product->rowCount() > 0) {
+        $message[] = 'product name already exist!';
+        header('location: product.php');
+    } else {
+        move_uploaded_file($image_tmp_name, $image_folder);
+        $insert_product = $conn->prepare("INSERT INTO `product`(name, price, description, category, image) VALUES(?,?,?,?,?)");
+        $insert_product->execute([$name, $price, $description, $category, $image]);
+        
+                $message[] = 'new product added!';
+                header('location: product.php');
+        
+        }
+    };
 
 if (isset($_GET['delete'])) {
 
@@ -27,7 +57,7 @@ if (isset($_GET['delete'])) {
     $delete_cart = $conn->prepare("DELETE FROM `cart` WHERE pid = ?");
     $delete_cart->execute([$delete_id]);
     header('location:product.php');
- }
+}
 ?>
 
 <!DOCTYPE html>
@@ -82,7 +112,7 @@ if (isset($_GET['delete'])) {
                     <div class="col-sm-6">
                         <div class="white-box">
                             <section class="add-products">
-                                <form action="functions/new.php" method="POST" enctype="multipart/form-data">
+                                <form action="" method="POST" enctype="multipart/form-data">
                                     <h3>Add Product</h3>
                                     <div class="inputGroup">
                                         <input type="text" required="" name="name" maxlength="100">
@@ -140,7 +170,7 @@ if (isset($_GET['delete'])) {
                                                 <img src="../uploaded_img/<?= $fetch_product['image']; ?>" alt="">
                                                 <div class="name"><?= $fetch_product['name']; ?></div>
                                                 <div class="price">Rs.<span><?= $fetch_product['price']; ?></span>/-</div>
-                                                <div class="category" style="font-size: 14px;"><?= $fetch_product['category']; ?></div>
+                                                <div class="category"><?= $fetch_product['category']; ?></div>
                                                 <div class="description"><span><?= $fetch_product['description']; ?></span></div>
                                                 <div class="flex-btn">
                                                     <a href="update_product.php?update=<?= $fetch_product['id']; ?>" class="option-btn">update</a>

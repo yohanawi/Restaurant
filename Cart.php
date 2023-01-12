@@ -1,3 +1,6 @@
+<?php
+include './Components/connection.php';
+?>
 <!DOCTYPE html>
 <html>
 

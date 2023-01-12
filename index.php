@@ -1,3 +1,13 @@
+<?php
+include 'Components/connection.php';
+
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+} else {
+    $user_id = '';
+};
+include 'Components/add_cart.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,14 +67,22 @@
                 <br />
                 <div class="swiper category-slider">
                     <div class="swiper-wrapper">
-                        <a href="category.php?category=Shirt" class="swiper-slide slide">
-                            <img src="images/image-removebg-preview-8-1-gzD.png" alt="">
-                            <h3>Pizza</h3>
-                        </a>
-                        <a href="category.php?category=Shirt" class="swiper-slide slide">
-                            <img src="images/image-removebg-preview-8-1-gzD.png" alt="">
-                            <h3>Buggers</h3>
-                        </a>
+                        <?php
+                        $select_category = $conn->prepare("SELECT * FROM `category` LIMIT 6");
+                        $select_category->execute();
+                        if ($select_category->rowCount() > 0) {
+                            while ($fetch_category = $select_category->fetch(PDO::FETCH_ASSOC)) {
+                        ?>
+                                <a href="category.php?category=Shirt" class="swiper-slide slide">
+                                    <img src="images/image-removebg-preview-8-1-gzD.png" alt="">
+                                    <h3><?= $fetch_category['category']; ?></h3>
+                                </a>
+                        <?php
+                            }
+                        } else {
+                            echo '<p class="empty">no Category added yet!</p>';
+                        }
+                        ?>
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
@@ -95,30 +113,30 @@
                 <br />
                 <div class="swiper product-slider">
                     <div class="swiper-wrapper">
-                        <a href="#" class="swiper-slide slide">
-                            <div class="product-card">
-                                <img src="images/image-removebg-preview-8-1-gzD.png">
-                                <div class="product-card-price">
-                                    <p>Rs.150.00</p>
-                                </div>
-                                <div class="product-cover">
-                                    <h1>Fish and Veggie</h1>
-                                    <p>Lorem ipsum dolor sit , consectetur adipiscing elit, sed do eiusmod tempor</p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="#" class="swiper-slide slide">
-                            <div class="product-card">
-                                <img src="images/image-removebg-preview-8-1-gzD.png">
-                                <div class="product-card-price">
-                                    <p>Rs.150.00</p>
-                                </div>
-                                <div class="product-cover">
-                                    <h1>Fish</h1>
-                                    <p>Lorem ipsum dolor sit , consectetur adipiscing elit, sed do eiusmod tempor</p>
-                                </div>
-                            </div>
-                        </a>
+                        <?php
+                        $select_products = $conn->prepare("SELECT * FROM `product` LIMIT 6");
+                        $select_products->execute();
+                        if ($select_products->rowCount() > 0) {
+                            while ($fetch_products = $select_products->fetch(PDO::FETCH_ASSOC)) {
+                        ?>
+                                <a href="#" class="swiper-slide slide">
+                                    <div class="product-card">
+                                        <img src="uploaded_img/<?= $fetch_products['image']; ?>">
+                                        <div class="product-card-price">
+                                            <p><?= $fetch_products['price']; ?></p>
+                                        </div>
+                                        <div class="product-cover">
+                                            <h1><?= $fetch_products['name']; ?></h1>
+                                            <p><?= $fetch_products['description']; ?></p>
+                                        </div>
+                                    </div>
+                                </a>
+                        <?php
+                            }
+                        } else {
+                            echo '<p class="empty">no products added yet!</p>';
+                        }
+                        ?>
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>

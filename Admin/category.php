@@ -1,8 +1,40 @@
 <?php
+/* DATABASE CONNECTION*/
+$db_name = 'mysql:host=localhost;dbname=restaurants';
+$user_name = 'root';
+$user_password = '';
+
+$conn = new PDO($db_name, $user_name, $user_password);
 require_once "functions/db.php";
 
 $sql = 'SELECT * FROM category';
 $query = mysqli_query($connection, $sql);
+
+if (isset($_POST['add'])) {
+    $category = $_POST['category'];
+    $category = filter_var($category, FILTER_SANITIZE_STRING);
+    $image = $_FILES['image']['name'];
+    $image = filter_var($image, FILTER_SANITIZE_STRING);
+    $image_size = $_FILES['image']['size'];
+    $image_tmp_name = $_FILES['image']['tmp_name'];
+    $image_folder = '../uploaded_img/'.$image;
+    //-- Insert Data Into DB --//
+    $select_category = $conn->prepare("SELECT * FROM `category` WHERE category = ?");
+    $select_category->execute([$category]);
+
+    if ($select_category->rowCount() > 0) {
+        $message[] = 'product name already exist!';
+        header('location: category.php');
+    } else {
+            move_uploaded_file($image_tmp_name, $image_folder);
+            $insert_category = $conn->prepare("INSERT INTO `category`(category, image) VALUES(?,?)");
+            $insert_category->execute([$category, $image]);
+
+            $message[] = 'new Category added!';
+            header('location: category.php');
+        
+    }
+};
 ?>
 
 <!DOCTYPE html>
@@ -58,10 +90,14 @@ $query = mysqli_query($connection, $sql);
                             <p class="text-muted m-b-30 font-13"> (Food category) </p>
                             <div class="row">
                                 <div class="col-sm-12 col-xs-6">
-                                    <form action="functions/new.php" method="POST">
+                                    <form action="" method="POST">
                                         <div class="form-group">
                                             <label>Category</label>
                                             <input type="text" name="category" class="form-control" required="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Category Image</label>
+                                            <input type="file" name="image" class="form-control" accept="image/jpg, image/jpeg, image/png, image/webp" required>
                                         </div>
                                         <div class="form-group text-center m-t-20">
                                             <div class="col-xs-12">
@@ -109,6 +145,7 @@ $query = mysqli_query($connection, $sql);
                                                             echo '<thead>
                                                                             <tr>
                                                                                 <th>Category</th>
+                                                                                <th>Category image</th>
                                                                                 <th>Action</th>
                                                                             </tr>
                                                                         </thead>
@@ -124,6 +161,7 @@ $query = mysqli_query($connection, $sql);
                                                     echo '
                                                             <tr>
                                                                 <td class="hidden-xs">' . $row["category"] . '</td>
+                                                                <td class="hidden-xs">' . $row["image"] . '</td>
                                                                 <td><a href="#"><i class="fa fa-trash"  data-toggle="modal" data-target="#responsive-modal' . $row["id"] . '" title="remove" style="color:red;"></i></a></td>
                                                                 <!-- /.modal -->
                                                                 <div id="responsive-modal' . $row["id"] . '" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">

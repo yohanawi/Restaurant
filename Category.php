@@ -1,3 +1,6 @@
+<?php
+include './Components/connection.php';
+?>
 <!DOCTYPE html>
 <html>
 
@@ -26,13 +29,25 @@
                 <p>All our best meals in one delicious snap</p>
             </div>
         </div>
-        <div class="card-category">
-            <a href="#">
-                <div class="icon-category">
-                    <img src="/Asset/dish-5.png">
-                </div>
-                <strong> Pizza</strong>
-            </a>
+        <div class="category-content">
+            <div class="box-container">
+                <?php
+                $select_category = $conn->prepare("SELECT * FROM `category` LIMIT 6");
+                $select_category->execute();
+                if ($select_category->rowCount() > 0) {
+                    while ($fetch_category = $select_category->fetch(PDO::FETCH_ASSOC)) {
+                ?>
+                        <a href="category.php?category=Shirt" class="swiper-slide slide">
+                            <img src="images/image-removebg-preview-8-1-gzD.png" alt="">
+                            <h3><?= $fetch_category['category']; ?></h3>
+                        </a>
+                <?php
+                    }
+                } else {
+                    echo '<p class="empty">no Category added yet!</p>';
+                }
+                ?>
+            </div>
         </div>
     </section>
 
