@@ -118,47 +118,62 @@ div {
 .header #menu-btn {
   display: none;
 }
-
-.btn-sign {
-  width: auto;
-  height: auto;
-  margin-right: 5px;
-  background: #EA6D27;
-  color: white;
-  border: none;
-  padding: 5px 20px 5px 20px;
-  border-radius: 0.625em;
-  font-size: 20px;
-  font-weight: 500;
-  font-family: David Libre;
+.header .icons > *{
+  margin-left: 1.5rem;
+  font-size: 2.5rem;
+  color:var(--black);
   cursor: pointer;
-  position: relative;
-  margin-left: 25px;
-  z-index: 1;
-  overflow: hidden;
 }
 
-.btn-sign:hover {
-  color: black;
+.header .icons > *:hover{
+  color: var(--yellow);
 }
 
-.btn-sign:after {
-  content: "";
-  background: white;
+.header .icons span{
+  font-size: 2rem;
+}
+
+.header .profile{
+  background-color: #fff;
+  border:.2rem solid#222;
+  padding:1.5rem;
+  text-align: center;
   position: absolute;
-  z-index: -1;
-  left: -20%;
-  right: -20%;
-  top: 0;
-  bottom: 0;
-  transform: skewX(-45deg) scale(0, 1);
-  transition: all 0.5s;
+  top:125%; right:18rem;
+  width: 30rem;
+  display: none;
+  animation: fadeIn .2s linear;
 }
 
-.btn-sign:hover:after {
-  transform: skewX(-45deg) scale(1, 1);
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
+.header .profile.active{
+  display: inline-block;
+}
+
+@keyframes fadeIn {
+  0%{
+     transform: translateY(1rem);
+  }
+}
+
+.header .profile .name{
+  font-size: 2rem;
+  color:#222;
+  margin-bottom: .5rem;
+}
+
+.header .profile .account{
+  margin-top: 1.5rem;
+  font-size: 2rem;
+  color:#777;
+}
+
+.header .profile .account a{
+  color:#222;
+}
+
+.header .profile .account a:hover{
+  color:#fed330;
+  text-decoration: underline;
 }
 
 /*heder ends*/
@@ -1337,3 +1352,5 @@ div {
   color: #666;
   font-size: 2rem;
 }
+
+

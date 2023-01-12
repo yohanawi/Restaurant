@@ -1,3 +1,44 @@
+<?php
+include './Components/connection.php';
+session_start();
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+} else {
+    $user_id = '';
+};
+if (isset($_POST['send'])) {
+    $name = $_POST['name'];
+    $name = filter_var($name, FILTER_SANITIZE_STRING);
+    $email = $_POST['email'];
+    $email = filter_var($email, FILTER_SANITIZE_STRING);
+    $number = $_POST['number'];
+    $number = filter_var($number, FILTER_SANITIZE_STRING);
+    $password = sha1($_POST['password']);
+    $password = filter_var($password, FILTER_SANITIZE_STRING);
+    $c_password = sha1($_POST['c-password']);
+    $c_password = filter_var($c_password, FILTER_SANITIZE_STRING);
+    $select_user = $conn->prepare("SELECT * FROM `user` WHERE email = ? OR number = ?");
+    $select_user->execute([$email, $number]);
+    $row = $select_user->fetch(PDO::FETCH_ASSOC);
+    if ($select_user->rowCount() > 0) {
+        $message[] = 'email or number already exists!';
+    } else {
+        if ($password != $c_password) {
+            $message[] = 'confirm password not matched!';
+        } else {
+            $insert_user = $conn->prepare("INSERT INTO `user`(name, email, number, password) VALUES(?,?,?,?)");
+            $insert_user->execute([$name, $email, $number, $c_password]);
+            $select_user = $conn->prepare("SELECT * FROM `user` WHERE email = ? AND password = ?");
+            $select_user->execute([$email, $password]);
+            $row = $select_user->fetch(PDO::FETCH_ASSOC);
+            if ($select_user->rowCount() > 0) {
+                $_SESSION['user_id'] = $row['id'];
+                header('location:index.php');
+            }
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -34,6 +75,9 @@
                     </div>
                     <div class="inputBox">
                         <input type="email" name="email" placeholder="Email" required class="box">
+                    </div>
+                    <div class="inputBox">
+                        <input type="text" name="number" placeholder="Number" required class="box">
                     </div>
                     <div class="inputBox">
                         <input type="password" name="password" placeholder="Password" required class="box">

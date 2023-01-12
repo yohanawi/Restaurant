@@ -1,5 +1,12 @@
 <?php
 include './Components/connection.php';
+session_start();
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+} else {
+    $user_id = '';
+};
+include './Components/add_cart.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -57,4 +64,7 @@ include './Components/connection.php';
         </div>
     </section>
     <?php include 'Components/Footer.php'; ?>
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <!-- custom js file link  -->
+    <script src="/Js/js.js"></script>
 </body>

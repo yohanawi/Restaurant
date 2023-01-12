@@ -45,3 +45,14 @@ var swiper = new Swiper(".home-slider", {
       prevEl: ".swiper-button-prev",
     },
 });
+
+
+profile = document.querySelector('.header .profile');
+
+        document.querySelector('#user-btn').onclick = () => {
+            profile.classList.toggle('active');
+        }
+
+        window.onscroll = () => {
+            profile.classList.remove('active');
+        }
