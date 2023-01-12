@@ -1,9 +1,25 @@
 <?php
+/* DATABASE CONNECTION*/
+$db_name = 'mysql:host=localhost;dbname=restaurants';
+$user_name = 'root';
+$user_password = '';
 
+$conn = new PDO($db_name, $user_name, $user_password);
+    /*DATABASE CONNECTION */
 require_once "functions/db.php";
 
-$sql_user = "SELECT * FROM user";
-$query_user = mysqli_query($connection, $sql_user);
+$sql_book = "SELECT * FROM book";
+$query_book = mysqli_query($connection, $sql_book);
+
+if(isset($_POST['update_status'])){
+
+    $order_id = $_POST['order_id'];
+    $status = $_POST['status'];
+    $update_status = $conn->prepare("UPDATE `book` SET status = ? WHERE id = ?");
+    $update_status->execute([$status, $order_id]);
+    $message[] = 'status updated!';
+ 
+ }
 ?>
 
 <!DOCTYPE html>
@@ -46,12 +62,54 @@ $query_user = mysqli_query($connection, $sql_user);
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <ol class="breadcrumb">
                             <li><a href="#">Dashboard</a></li>
-                            <li class="active">Manage-user</li>
+                            <li class="active">Booking</li>
                         </ol>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
                 <!-- /row -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="white-box">
+                            <h3 class="box-title m-b-0">Bookings ( <x style="color: orange;"><?php echo mysqli_num_rows($query_book); ?></x> )</h3>
+                            <div class="box-container">
+                                <?php
+                                $select_book = $conn->prepare("SELECT * FROM `book`");
+                                $select_book->execute();
+                                if ($select_book->rowCount() > 0) {
+                                    while ($fetch_book = $select_book->fetch(PDO::FETCH_ASSOC)) {
+                                ?>
+                                        <div class="box">
+                                            <p> user id : <span><?= $fetch_book['user_id']; ?></span> </p>
+                                            <p> placed on : <span><?= $fetch_book['date']; ?> | <?= $fetch_book['time']; ?></span> </p>
+                                            <p> name : <span><?= $fetch_book['name']; ?></span> </p>
+                                            <p> email : <span><?= $fetch_book['number']; ?></span> </p>
+                                            <p> number : <span><?= $fetch_book['tables']; ?></span> </p>
+                                            <p> address : <span><?= $fetch_book['seat']; ?></span> </p>
+                                            <form action="" method="POST">
+                                                <input type="hidden" name="order_id" value="<?= $fetch_book['id']; ?>">
+                                                <select name="status" class="drop-down">
+                                                    <option value="" selected disabled><?= $fetch_book['status']; ?></option>
+                                                    <option value="pending">pending</option>
+                                                    <option value="completed">completed</option>
+                                                </select>
+                                                <div class="flex-btn">
+                                                    <input type="submit" value="update" class="btn" name="update_status">
+                                                    <a href="placed_orders.php?delete=<?= $fetch_book['id']; ?>" class="delete-btn" onclick="return confirm('delete this order?');">delete</a>
+                                                </div>
+                                            </form>
+                                        </div>
+                                <?php
+                                    }
+                                } else {
+                                    echo '<p class="empty">no orders placed yet!</p>';
+                                }
+                                ?>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="white-box">
@@ -76,32 +134,40 @@ $query_user = mysqli_query($connection, $sql_user);
                                         </div>';
                             }
                             ?>
-                            <h3 class="box-title m-b-0">Users ( <x style="color: orange;"><?php echo mysqli_num_rows($query_user); ?></x> )</h3>
+                            <h3 class="box-title m-b-0">Bookings ( <x style="color: orange;"><?php echo mysqli_num_rows($query_book); ?></x> )</h3>
                             <p class="text-muted m-b-30">Export data to Copy, CSV, Excel, PDF & Print</p>
                             <div class="table-responsive">
                                 <table id="example23" class="display nowrap" cellspacing="0" width="100%">
                                     <?php
-                                    if (mysqli_num_rows($query_user) == 0) {
+                                    if (mysqli_num_rows($query_book) == 0) {
                                         echo "<i style='color:brown;'>No Users Here :( </i> ";
                                     } else {
                                         echo '
                                                     <thead>
                                                         <tr>
                                                             <th>Name</th>
-                                                            <th>Email</th>
-                                                            <th>Phone</th>
+                                                            <th>Mobile No.</th>
+                                                            <th>Table No</th>
+                                                            <th>Seat No</th>
+                                                            <th>Date</th>
+                                                            <th>Time</th>
+                                                            <th>Status</th>
                                                             <th>Action</th>
                                                         </tr>
                                                     </thead>
                                                 <tbody>';
                                     }
-                                    while ($row = mysqli_fetch_array($query_user)) {
+                                    while ($row = mysqli_fetch_array($query_book)) {
                                         // $id = $row["id"]
                                         echo '
                                                     <tr>
                                                         <td>' . $row["name"] . '</td>
-                                                        <td>' . $row["email"] . '</td>
-                                                        <td>' . $row["number"] . '</td>                                               
+                                                        <td>' . $row["number"] . '</td> 
+                                                        <td>' . $row["tables"] . '</td> 
+                                                        <td>' . $row["seat"] . '</td>   
+                                                        <td>' . $row["date"] . '</td>   
+                                                        <td>' . $row["time"] . '</td>     
+                                                        <td>' . $row["status"] . '</td>                                           
                                                         <td><a href="#"><i class="fa fa-trash" data-toggle="modal" data-target="#responsive-modal' . $row["id"] . '" title="remove" style="color:red;"></i></a></td>
                                                         <!-- /.modal -->
                                                         <div id="responsive-modal' . $row["id"] . '" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
@@ -109,7 +175,7 @@ $query_user = mysqli_query($connection, $sql_user);
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
                                                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                                        <h4 class="modal-title">Are you sure you want to delete this user?</h4>
+                                                                        <h4 class="modal-title">Are you sure you want to delete this booking?</h4>
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <form action="functions/delete-user.php" method="post">

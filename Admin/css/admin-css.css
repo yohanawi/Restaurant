@@ -159,3 +159,74 @@ button:hover {
 .option-btn:hover{
    background-color: #c1cad3;
 }
+
+
+.about-btn {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 10px;
+   background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
+   border: solid 3px transparent;
+   background-clip: padding-box;
+   box-shadow: 0px 0px 0px 3px #ffffff00;
+   color: white;
+   min-height: 43px;
+   padding: 0 13px 0 13px;
+   border-radius: 50px;
+   text-transform: uppercase;
+   letter-spacing: 2px;
+   transition: all .5s ease;
+ }
+ 
+ .about-btn:active {
+   transform: scale(.9);
+   transition: all 100ms ease;
+ }
+ 
+ .about-btn:hover {
+   box-shadow: 0px 0px 0px 3px #30a1b8;
+ }
+ 
+ .about-btn svg {
+   width: 16px;
+ }
+
+  .row .white-box .box-container{
+   display: grid;
+   grid-template-columns: repeat(auto-fit, 33rem);
+   gap:1.5rem;
+   justify-content: center;
+   align-items: flex-start;
+}
+
+ .row .white-box .box-container .box{
+   background-color: var(--white);
+   border-radius: .5rem;
+   box-shadow: var(--box-shadow);
+   border:var(--border);
+   padding:2rem;
+   padding-top: 1rem;
+}
+
+ .row .white-box .box-container .box p{
+   padding: .5rem 0;
+   line-height: 1.5;
+   font-size: 1.8rem;
+   color:var(--black);
+}
+
+ .row .white-box .box-container .box p span{
+   color:var(--main-color);
+}
+
+ .row .white-box .box-container .box .drop-down{
+   width: 100%;
+   margin:1rem 0;
+   background-color: var(--light-bg);
+   padding:1rem 1.4rem;
+   font-size: 2rem;
+   color:var(--black);
+   border:var(--border);
+   border-radius: .5rem;
+}

@@ -15,10 +15,15 @@
             <li> <a href="#" class="waves-effect"><i data-icon="p" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Reservations<span class="fa arrow"></span></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="#">Tables</a></li>
-                    <li><a href="#">Bookings</a></li>
+                    <li><a href="/Admin/placed_book.php">Bookings</a></li>
                 </ul>
             </li>
-            
+            <li class="nav-small-cap m-t-10">--- Settings</li>
+            <li> <a href="#" class="waves-effect"><i data-icon="p" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">System<span class="fa arrow"></span></span></a>
+                <ul class="nav nav-second-level">
+                    <li><a href="/Admin/about.php">About Section</a></li>
+                </ul>
+            </li>
             <li><a href="#" class="waves-effect"><i class="icon-logout fa-fw"></i> <span class="hide-menu">Log out</span></a></li>
         </ul>
     </div>

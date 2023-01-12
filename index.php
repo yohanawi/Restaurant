@@ -44,7 +44,7 @@ include './Components/add_cart.php';
                             <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</span>
                             <br /><br />
                             <a href="/Menu.php" class="btn-menu">Menu</a>
-                            <a href="menu.html" class="btn-book">Book a table</a>
+                            <a href="/Reservation.php" class="btn-book">Book a table</a>
 
                         </div>
                     </div>
@@ -151,9 +151,9 @@ include './Components/add_cart.php';
             </div>
             <div class="content">
                 <span>new season trending!</span>
-                <h3>best summer collection</h3>
+                <h3>best summer season</h3>
                 <p>sale get up to 50% off</p>
-                <a href="shop.php" class="btn">Book Now</a>
+                <a href="./Reservation.php" class="btn">Book Now</a>
             </div>
         </section>
     </div>

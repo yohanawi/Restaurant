@@ -24,6 +24,8 @@ $query_message = mysqli_query($connection, $sql_message);
     <!-- Bootstrap Core CSS -->
     <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../plugins/bower_components/bootstrap-extension/css/bootstrap-extension.css" rel="stylesheet">
+    <link href="../plugins/bower_components/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" rel="stylesheet" type="text/css" />
     <!-- Menu CSS -->
     <link href="../plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css" rel="stylesheet">
     <!-- toast CSS -->
@@ -164,14 +166,15 @@ $query_message = mysqli_query($connection, $sql_message);
         </div>
         <!-- .right-sidebar -->
         <?php include './components/sidebar.php'; ?>
-        <!-- /.container-fluid -->
-        <?php include './components/footer.php'; ?>
+            </div>
+            <!-- /.container-fluid -->
+            <?php include './components/footer.php'; ?>
     </div>
     <!-- /#page-wrapper -->
     </div>
     <!-- /#wrapper -->
-    <!-- jQuery -->
-    <script src="../plugins/bower_components/jquery/dist/jquery.min.js"></script>
+   <!-- jQuery -->
+   <script src="../plugins/bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="bootstrap/dist/js/tether.min.js"></script>
     <script src="bootstrap/dist/js/bootstrap.min.js"></script>
@@ -195,7 +198,7 @@ $query_message = mysqli_query($connection, $sql_message);
     <script src="../plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
     <script src="../plugins/bower_components/jquery-sparkline/jquery.charts-sparkline.js"></script>
     <script src="../plugins/bower_components/toast-master/js/jquery.toast.js"></script>
-
+    
     <script type="text/javascript">
         $(document).ready(function() {
             $.toast({
