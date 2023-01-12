@@ -25,6 +25,7 @@ include './Components/add_cart.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <!-- custom css file link  -->
     <link rel="stylesheet" href="Css/style.css">
+    <link rel="stylesheet" href="Css/back.css">
 
 </head>
 
@@ -44,6 +45,7 @@ include './Components/add_cart.php';
                             <br /><br />
                             <a href="/Menu.php" class="btn-menu">Menu</a>
                             <a href="menu.html" class="btn-book">Book a table</a>
+
                         </div>
                     </div>
                 </div>
@@ -161,6 +163,7 @@ include './Components/add_cart.php';
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
     <!-- custom js file link  -->
     <script src="/Js/js.js"></script>
+
     <script>
         var swiper = new Swiper(".hero-slider", {
             loop: true,

@@ -1,58 +1,52 @@
 let navbar = document.querySelector('.header .navbar');
 
-document.querySelector('#menu-btn').onclick = () =>{
+document.querySelector('#menu-btn').onclick = () => {
     navbar.classList.add('active');
+    profile.classList.remove('active');
 }
 
-document.querySelector('#nav-close').onclick = () =>{
+document.querySelector('#nav-close').onclick = () => {
     navbar.classList.remove('active');
 }
+profile = document.querySelector('.header .profile');
 
+document.querySelector('#user-btn').onclick = () => {
+    profile.classList.toggle('active');
+}
 let searchForm = document.querySelector('.search-form');
 
-document.querySelector('#search-btn').onclick = () =>{
+document.querySelector('#search-btn').onclick = () => {
     searchForm.classList.add('active');
 }
 
-document.querySelector('#close-search').onclick = () =>{
+document.querySelector('#close-search').onclick = () => {
     searchForm.classList.remove('active');
 }
 
-window.onscroll = () =>{
+window.onscroll = () => {
     navbar.classList.remove('active');
 
-    if(window.scrollY > 0){
+    if (window.scrollY > 0) {
         document.querySelector('.header').classList.add('active');
-    }else{
+    } else {
         document.querySelector('.header').classList.remove('active');
     }
 };
 
-window.onload = () =>{
-    if(window.scrollY > 0){
+window.onload = () => {
+    if (window.scrollY > 0) {
         document.querySelector('.header').classList.add('active');
-    }else{
+    } else {
         document.querySelector('.header').classList.remove('active');
     }
 };
 
 
 var swiper = new Swiper(".home-slider", {
-    loop:true, 
-    grabCursor:true,
+    loop: true,
+    grabCursor: true,
     navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
     },
 });
-
-
-profile = document.querySelector('.header .profile');
-
-        document.querySelector('#user-btn').onclick = () => {
-            profile.classList.toggle('active');
-        }
-
-        window.onscroll = () => {
-            profile.classList.remove('active');
-        }
