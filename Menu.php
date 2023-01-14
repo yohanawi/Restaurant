@@ -6,7 +6,7 @@ if (isset($_SESSION['user_id'])) {
 } else {
     $user_id = '';
 };
-include './Components/add_cart.php';
+include 'Components/add_cart.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -43,17 +43,21 @@ include './Components/add_cart.php';
                 while ($fetch_products = $select_products->fetch(PDO::FETCH_ASSOC)) {
             ?>
                     <div class="pro-card">
-                        <div class="pro-card-img"><img src="uploaded_img/<?= $fetch_products['image']; ?>"></div>
-                        <div class="pro-card-info">
-                            <p class="pro-text-title"><?= $fetch_products['name']; ?></p>
-                            <p class="pro-text-body"><?= $fetch_products['description']; ?></p>
-                        </div>
-                        <div class="pro-card-footer">
-                            <span class="pro-text-title"><?= $fetch_products['price']; ?></span>
-                            <div class="pro-card-button">
-                                <button type="submit" name="add_to_cart" class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
+                    <input type="hidden" name="pid" value="<?= $fetch_products['id']; ?>">
+         <input type="hidden" name="name" value="<?= $fetch_products['name']; ?>">
+         <input type="hidden" name="price" value="<?= $fetch_products['price']; ?>">
+         <input type="hidden" name="image" value="<?= $fetch_products['image']; ?>">
+                        <a href="Quick.php?pid=<?= $fetch_products['id']; ?>">
+                            <div class="pro-card-img"><img src="uploaded_img/<?= $fetch_products['image']; ?>"></div>
+                            <div class="pro-card-info">
+                                <p class="pro-text-title1"><?= $fetch_products['name']; ?></p>
+                                <p class="pro-text-body"><a href="Products.php?category=<?= $fetch_products['category']; ?>" class="cat"><?= $fetch_products['category']; ?></a></p>
                             </div>
+                        </a>
+                        <div class="pro-card-footer">
+                            <span class="pro-text-title">Rs.<?= $fetch_products['price']; ?></span>
                         </div>
+                        <button type="submit" name="add_to_cart" class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
                     </div>
             <?php
                 }

@@ -25,7 +25,6 @@ include './Components/add_cart.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <!-- custom css file link  -->
     <link rel="stylesheet" href="Css/style.css">
-    <link rel="stylesheet" href="Css/back.css">
 
 </head>
 
@@ -76,7 +75,7 @@ include './Components/add_cart.php';
                         if ($select_category->rowCount() > 0) {
                             while ($fetch_category = $select_category->fetch(PDO::FETCH_ASSOC)) {
                         ?>
-                                <a href="category.php?category=Shirt" class="swiper-slide slide">
+                                <a href="Products.php?category=<?= $fetch_category['category']; ?>" class="swiper-slide slide">
                                     <img src="images/image-removebg-preview-8-1-gzD.png" alt="">
                                     <h3><?= $fetch_category['category']; ?></h3>
                                 </a>
@@ -122,7 +121,8 @@ include './Components/add_cart.php';
                         if ($select_products->rowCount() > 0) {
                             while ($fetch_products = $select_products->fetch(PDO::FETCH_ASSOC)) {
                         ?>
-                                <a href="#" class="swiper-slide slide">
+                                 <a href="Quick.php?pid=<?= $fetch_products['id']; ?>" class="swiper-slide slide">
+                                
                                     <div class="product-card">
                                         <img src="uploaded_img/<?= $fetch_products['image']; ?>">
                                         <div class="product-card-price">
@@ -133,7 +133,8 @@ include './Components/add_cart.php';
                                             <p><?= $fetch_products['description']; ?></p>
                                         </div>
                                     </div>
-                                </a>
+                               
+                                 </a>
                         <?php
                             }
                         } else {

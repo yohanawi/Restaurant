@@ -29,7 +29,7 @@
         ?>
             <p class="name"><?= $fetch_profile['name']; ?></p>
             <div class="flex">
-                <a href="#" class="btn">profile</a>
+                <a href="/Profile.php" class="btn">profile</a>
                 <a href="Components/user_logout.php" onclick="return confirm('logout from this website?');" class="delete-btn">logout</a>
             </div>
             <p class="account">

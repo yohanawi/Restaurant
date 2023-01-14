@@ -50,3 +50,11 @@ var swiper = new Swiper(".home-slider", {
         prevEl: ".swiper-button-prev",
     },
 });
+
+
+
+document.querySelectorAll('input[type="number"]').forEach(numberInput => {
+    numberInput.oninput = () =>{
+       if(numberInput.value.length > numberInput.maxLength) numberInput.value = numberInput.value.slice(0, numberInput.maxLength);
+    };
+ });

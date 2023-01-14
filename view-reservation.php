@@ -9,12 +9,7 @@ if (isset($_SESSION['user_id'])) {
     $user_id = '';
     header('location:index.php');
 };
-if(isset($_POST['delete'])){
-    $user_id = $_POST['user_id'];
-    $delete_item = $conn->prepare("DELETE FROM `book` WHERE id = ?");
-    $delete_item->execute([$user_id]);
-    $message[] = 'book item deleted!';
- }
+
 ?>
 <!DOCTYPE html>
 <html>

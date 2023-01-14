@@ -1,12 +1,14 @@
 <?php
 include './Components/connection.php';
+
 session_start();
+
 if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
 } else {
     $user_id = '';
+    header('location:index.php');
 };
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,30 +34,30 @@ if (isset($_SESSION['user_id'])) {
     <section class="page">
         <div class="row">
             <div class="page-heading">
-                <h1>Top Category</h1>
-                <p>All our best meals in one delicious snap</p>
+                <h1>Profile</h1>
+                <p></p>
             </div>
         </div>
-        <div class="category-content">
-            <div class="box-container">
+        <section class="user-details">
+
+            <div class="user">
                 <?php
-                $select_category = $conn->prepare("SELECT * FROM `category` LIMIT 6");
-                $select_category->execute();
-                if ($select_category->rowCount() > 0) {
-                    while ($fetch_category = $select_category->fetch(PDO::FETCH_ASSOC)) {
+
                 ?>
-                        <a href="Products.php?category=<?= $fetch_category['category']; ?>" class="swiper-slide slide">
-                            <img src="images/image-removebg-preview-8-1-gzD.png" alt="">
-                            <h3><?= $fetch_category['category']; ?></h3>
-                        </a>
-                <?php
-                    }
-                } else {
-                    echo '<p class="empty">no Category added yet!</p>';
-                }
-                ?>
+                <img src="images/user-icon.png" alt="">
+                <p><i class="fas fa-user"></i><span><span><?= $fetch_profile['name']; ?></span></span></p>
+                <p><i class="fas fa-phone"></i><span><?= $fetch_profile['number']; ?></span></p>
+                <p><i class="fas fa-envelope"></i><span><?= $fetch_profile['email']; ?></span></p>
+                <a href="update_profile.php" class="btn">update info</a>
+                <p class="address"><i class="fas fa-map-marker-alt"></i><span><?php if ($fetch_profile['address'] == '') {
+                                                                                    echo 'please enter your address';
+                                                                                } else {
+                                                                                    echo $fetch_profile['address'];
+                                                                                } ?></span></p>
+                <a href="update_address.php" class="btn">update address</a>
             </div>
-        </div>
+
+        </section>
     </section>
 
     <?php include 'Components/Footer.php'; ?>
