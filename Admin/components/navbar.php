@@ -12,7 +12,7 @@
             <li><a href="/Admin/placed_orders.php" class="waves-effect"><i data-icon="`" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Orders</a></li>
             <li><a href="/Admin/message.php" class="waves-effect"><i data-icon="-" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Messages</a></li>
             <li><a href="/Admin/category.php" class="waves-effect"><i data-icon="s" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Category</a></li>
-            <li><a href="/Admin/users.php" class="waves-effect"><i data-icon="^" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Gallary</a></li>
+            <li><a href="#" class="waves-effect"><i data-icon="^" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Gallary</a></li>
             <li><a href="/Admin/subscribe.php" class="waves-effect"><i data-icon="&#xe016;" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Subscribe</a></li>
             <li class="nav-small-cap m-t-10">--- Reservation</li>
             <li> <a href="#" class="waves-effect"><i data-icon="V" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Reservations<span class="fa arrow"></span></span></a>
@@ -25,6 +25,13 @@
             <li> <a href="#" class="waves-effect"><i data-icon="P" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">System<span class="fa arrow"></span></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="/Admin/about.php">About Section</a></li>
+                </ul>
+            </li>
+            <li class="nav-small-cap m-t-10">--- Report</li>
+            <li> <a href="#" class="waves-effect"><i data-icon="P" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Reports<span class="fa arrow"></span></span></a>
+                <ul class="nav nav-second-level">
+                    <li><a href="../functions/Order-report.php">Order report</a></li>
+                    <li><a href="../functions/Booking-report.php">Booking report</a></li>
                 </ul>
             </li>
             <li><a href="/Admin/admin_login.php" class="waves-effect"><i class="icon-logout fa-fw"></i> <span class="hide-menu">Log out</span></a></li>

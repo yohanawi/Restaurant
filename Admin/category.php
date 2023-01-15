@@ -83,18 +83,6 @@ if (isset($_POST['add'])) {
                 <div class="row">
                     <div class="col-md-6">
                         <div class="white-box">
-                            <?php
-                            if (isset($message)) {
-                                foreach ($message as $message) {
-                                    echo '
-                                        <div class="message">
-                                            <span>' . $message . '</span>
-                                            <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
-                                        </div>
-                                        ';
-                                }
-                            }
-                            ?>
                             <h3 class="box-title m-b-0">Add Category</h3>
                             <p class="text-muted m-b-30 font-13"> (Food category) </p>
                             <div class="row">

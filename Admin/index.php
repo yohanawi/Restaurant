@@ -135,9 +135,6 @@ $query_book = mysqli_query($connection, $sql_book);
                         </div>
                     </div>
                 </div>
-
-
-                
                 <!-- /.row -->
                 <!-- .right-sidebar -->
                 <?php include './components/sidebar.php'; ?>

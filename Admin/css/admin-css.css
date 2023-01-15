@@ -170,9 +170,15 @@
    border-radius: .5rem;
 }
 
+
 /*admin login page*/
 
-/*admin login page end*/
+/*admin index page*/
+h5 {
+   font-family: 'Inter';
+   font-style: normal;
+   font-weight: 400;
+}
 /*admin about page*/
 .add-about h3 {
    text-align: center;
@@ -235,12 +241,11 @@
    width: 16px;
 }
 
-/*admin about page end*/
 /*admin account*/
 .nav-profile{
    width: 25%;
 }
-/*admin account end*/
+
 /*admin update product*/
 .update-product form {
    margin: 0 auto;
@@ -282,64 +287,64 @@
    color: var(--black);
 }
 
-/*admin update product end*/
+/*Admin product page*/
+.add-products .form-container {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   min-height: 100vh;
+}
+
+.add-products .form-container form {
+   background-color: var(--white);
+   border-radius: .5rem;
+   border: var(--border);
+   box-shadow: var(--box-shadow);
+   padding: 2rem;
+   font-family: 'Inter';
+   font-style: normal;
+   font-weight: 400;
+   width: 50rem;
+}
+
+.add-products .form-container form h3 {
+   font-size: 2.5rem;
+   color: var(--black);
+   text-transform: capitalize;
+   margin-bottom: 1rem;
+}
+
+.add-products .form-container form p {
+   margin: 1rem 0;
+   font-size: 2rem;
+   color: var(--light-color);
+}
+
+ .form-container form span {
+   color: var(--main-color);
+   font-family: 'Inter';
+   font-style: normal;
+   font-weight: 400;
+   margin: 0px;
+   
+}
+
+.add-products .form-container form .box {
+   width: 100%;
+   background-color: var(--light-bg);
+   padding: 1.4rem;
+   font-size: 1.4rem;
+   color: var(--black);
+   margin: 1rem 0;
+   border: var(--border);
+   font-size: 1.8rem;
+   border-radius: .5rem;
+}
 .add-products h3 {
    text-align: center;
 }
 
-.inputGroup {
-   font-family: 'Segoe UI', sans-serif;
-   margin: 1em 0 1em 0;
-   max-width: 500px;
-   position: relative;
-}
 
-.inputGroup input,
-textarea,
-select {
-   font-size: 100%;
-   padding: 0.8em;
-   outline: none;
-   border: 2px solid rgb(200, 200, 200);
-   background-color: transparent;
-   border-radius: 20px;
-   width: 100%;
-}
-
-.inputGroup label {
-   font-size: 100%;
-   position: absolute;
-   left: 0;
-   padding: 0.8em;
-   margin-left: 0.5em;
-   pointer-events: none;
-   transition: all 0.3s ease;
-   color: rgb(100, 100, 100);
-}
-
-.inputGroup :is(input:focus, input:valid)~label {
-   transform: translateY(-50%) scale(.9);
-   margin: 0em;
-   margin-left: 1.3em;
-   padding: 0.4em;
-   background-color: #e8e8e8;
-}
-
-.inputGroup :is(input:focus, input:valid) {
-   border-color: rgb(150, 150, 200);
-}
-
-.inputGroup :is(textarea:focus, textarea:valid)~label {
-   transform: translateY(-50%) scale(.9);
-   margin: 0em;
-   margin-left: 1.3em;
-   padding: 0.4em;
-   background-color: #e8e8e8;
-}
-
-.inputGroup :is(textarea:focus, textarea:valid) {
-   border-color: rgb(150, 150, 200);
-}
 
 button {
    border: 2px solid #24b4fb;
