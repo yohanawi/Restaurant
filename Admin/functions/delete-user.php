@@ -30,4 +30,6 @@
     } else {
         header('Location:../placed_book?del_error');
     }
+
+    
 ?>

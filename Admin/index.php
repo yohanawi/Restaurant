@@ -1,6 +1,12 @@
 <?php
 require_once "functions/db.php"; //databse connection
+session_start();
 
+$admin_id = $_SESSION['admin_id'];
+
+if(!isset($admin_id)){
+   header('location:admin_login.php');
+}
 $sql_category = "SELECT * FROM category";
 $query_category = mysqli_query($connection, $sql_category);
 $sql_user = "SELECT * FROM user";
