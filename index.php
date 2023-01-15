@@ -78,7 +78,7 @@ include './Components/add_cart.php';
                             while ($fetch_category = $select_category->fetch(PDO::FETCH_ASSOC)) {
                         ?>
                                 <a href="Products.php?category=<?= $fetch_category['category']; ?>" class="swiper-slide slide">
-                                    <img src="images/image-removebg-preview-8-1-gzD.png" alt="">
+                                    <img src="uploaded_img/<?= $fetch_category['image']; ?>">
                                     <h3><?= $fetch_category['category']; ?></h3>
                                 </a>
                         <?php
@@ -95,23 +95,25 @@ include './Components/add_cart.php';
                 </center>
             </div>
         </section>
-        <section>
-            <div class="about-content">
-                <div class="image-about">
-                    <img src="/Asset/Group 4.png" alt="about" class="first">
-                    <img src="/Asset/Group 4.png" alt="about" class="second">
+        <section style="justify-content: center;">
+            <center>
+                <div class="about-content">
+                    <div class="image-about">
+                        <img src="/Asset/Group 4.png" alt="about" class="first">
+                        <img src="/Asset/Group 4.png" alt="about" class="second">
+                    </div>
+                    <div class="topic-about">
+                        <h2>About</h2>
+                    </div>
+                    <div class="logo-about">
+                        <img src="/Images/Beige & Brown Illustration Restaurant Logo no bg.png">
+                    </div>
+                    <div class="content-about">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <a href="/About.php">Read more</a>
+                    </div>
                 </div>
-                <div class="topic-about">
-                    <h2>About</h2>
-                </div>
-                <div class="logo-about">
-                    <img src="/Images/Beige & Brown Illustration Restaurant Logo no bg.png">
-                </div>
-                <div class="content-about">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <a href="/About.php">Read more</a>
-                </div>
-            </div>
+            </center>
         </section>
         <section>
             <div class="product-content">
@@ -127,7 +129,6 @@ include './Components/add_cart.php';
                             while ($fetch_products = $select_products->fetch(PDO::FETCH_ASSOC)) {
                         ?>
                                 <a href="Quick.php?pid=<?= $fetch_products['id']; ?>" class="swiper-slide slide">
-
                                     <div class="product-card">
                                         <img src="uploaded_img/<?= $fetch_products['image']; ?>">
                                         <div class="product-card-price">
@@ -138,7 +139,6 @@ include './Components/add_cart.php';
                                             <p><?= $fetch_products['description']; ?></p>
                                         </div>
                                     </div>
-
                                 </a>
                         <?php
                             }
@@ -150,7 +150,7 @@ include './Components/add_cart.php';
                     <div class="swiper-pagination"></div>
                 </div>
                 <center>
-                    <a href="/Category.php" class="btn">View all</a>
+                    <a href="/Menu.php" class="btn">View all</a>
                 </center>
             </div>
         </section>
@@ -158,7 +158,7 @@ include './Components/add_cart.php';
             <div class="image">
                 <img src="images/mask-group-Vjo.png" alt="">
             </div>
-            <div class="content">
+            <div class="content-deal">
                 <span>new season trending!</span>
                 <h3>best summer season</h3>
                 <p>sale get up to 50% off</p>
@@ -166,12 +166,15 @@ include './Components/add_cart.php';
             </div>
         </section>
         <section class="newsletter">
-            <div class="content">
+            <div class="content-sub">
                 <h1 class="heading">subscirbe now</h1>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam ipsam repellat nostrum esse officiis unde quisquam corporis doloremque adipisci similique!</p>
                 <form action="./Components/New.php" method="POST">
-                    <input type="email" name="subscribe" placeholder="enter your email" id="" class="email">
-                    <input type="submit" value="subscirbe" class="btn" name="sub">
+                    <div class="input-group-sub">
+                        <input type="email" class="input-sub" id="Email" name="subscribe" placeholder="subscribe@gmail.com">
+                        <input class="button--submit" value="Subscribe" type="submit" name="sub">
+                    </div>
+
                 </form>
             </div>
         </section>

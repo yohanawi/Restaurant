@@ -67,7 +67,7 @@ if(isset($_POST['send'])){
                 </div>
                 <div class="link">Don’t Have a Account |<a href="Register.php"> Register ?</a></div>
             </div>
-            <div class="vl"></div>
+            <center><div class="vl"></div></center>
             <div class="left-box">
                 <form action="" method="POST">
                     <div class="inputBox">

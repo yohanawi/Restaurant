@@ -82,10 +82,20 @@ if(isset($_POST['book'])){
                     <select name="tables" class="box" required style="width: 48%;">
                         <option value="" disabled selected>select Table --</option>
                         <option value="2">2</option>
+                        <option value="2">3</option>
+                        <option value="2">4</option>
+                        <option value="2">5</option>
+                        <option value="2">6</option>
+                        <option value="2">7</option>
+                        <option value="2">8</option>
                     </select>
                     <select name="seat" class="box" required style="width: 48%;">
                         <option value="" disabled selected>select Setas --</option>
                         <option value="2">2</option>
+                        <option value="2">4</option>
+                        <option value="2">5</option>
+                        <option value="2">6</option>
+                        <option value="2">8</option>
                     </select>
                 </div>
                 <div class="inputBox">

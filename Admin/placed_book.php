@@ -96,7 +96,7 @@ if (isset($_GET['delete'])) {
                                                     <option value="completed">completed</option>
                                                 </select>
                                                 <div class="flex-btn">
-                                                    <input type="submit" value="update" class="btn" name="update_status">
+                                                    <input type="submit" value="update" class="btn1" name="update_status">
                                                     <a href="placed_book.php?delete=<?= $fetch_book['id']; ?>" class="delete-btn" onclick="return confirm('delete this Booking?');">delete</a>
                                                 </div>
                                             </form>

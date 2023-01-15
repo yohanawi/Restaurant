@@ -10,6 +10,7 @@
   --light-bg: #eee;
   --border: .2rem solid var(--black);
   --box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+  --main-background: #E5E5E5;
 }
 
 * {
@@ -27,14 +28,19 @@
 
 html {
   font-size: 62.5%;
-  background-color: #E5E5E5;
+  background-color: var(--main-background);
   overflow-x: hidden;
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
+  background-image: url(/Asset/eclips.png);
+  background-size: 25%;
+  background-repeat: no-repeat;
 }
 
 section {
   padding: 5rem 9%;
+  background-image: url(/Asset/leves.png);
+  background-repeat: no-repeat;
 }
 
 .btn {
@@ -383,7 +389,7 @@ div {
 .about-content {
   position: relative;
   display: flex;
-  width: 1314px;
+  width: auto;
   height: 600px;
   margin-top: 0px;
 }
@@ -699,7 +705,7 @@ div {
   position: absolute;
   width: 250px;
   height: 0px;
-  left: 620px;
+  left: 520px;
   top: 421px;
   border: 1px solid #000000;
   transform: rotate(-90deg);
@@ -707,7 +713,7 @@ div {
 
 .card .left-box {
   position: absolute;
-  left: 830px;
+  left: 750px;
   top: 300px;
 }
 
@@ -760,7 +766,7 @@ div {
   background-size: 40%;
   background-position-y: center;
   background-repeat: no-repeat;
-  background-position-x: 650px;
+  background-position-x: 550px;
 }
 
 .card .right-box-R h2 {
@@ -779,7 +785,7 @@ div {
   position: absolute;
   width: 292.56px;
   height: 51px;
-  left: 853px;
+  left: 753px;
   top: 355px;
   padding-top: 15px;
   margin-left: 52px;
@@ -812,7 +818,7 @@ div {
   margin-top: 200px;
   top: 400px;
   text-align: center;
-  left: 900px;
+  left: 800px;
 
 }
 
@@ -1057,22 +1063,27 @@ div {
 
 .btn-menu {
   padding: 8px 25px;
-  border-radius: 8px;
+  border-radius: 8px 15px;
   background: #101A24;
-  font-family: 'David Libre';
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
   line-height: 29px;
   text-align: center;
-  color: #FFFFFF;
+  color: var(--white);
   box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.btn-menu:hover {
+  background-color: var(--light-bg);
+  color: var(--black);
 }
 
 .btn-book {
   padding: 8px 25px;
-  border-radius: 8px;
-  font-family: 'David Libre';
+  border-radius: 8px 15px;
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
@@ -1082,11 +1093,16 @@ div {
   box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.15);
 }
 
+.btn-book:hover {
+  background-color: var(--light-bg);
+  color: var(--black);
+}
+
 .swiper-pagination-bullet-active {
   background-color: var(--yellow);
 }
 
-/*banner*/
+/*index page banner*/
 .banner-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1274,6 +1290,7 @@ div {
   height: 20rem;
   margin-left: -45px;
   object-fit: contain;
+  margin-bottom: 1rem;
 }
 
 .product-card .product-card-price {
@@ -1305,7 +1322,7 @@ div {
   background-color: #fff;
   margin-top: -100px;
   width: 180px;
-  height: 150px;
+  height: auto;
   margin-left: 10px;
   border-radius: 25px 25px 10px 10px;
 }
@@ -1360,26 +1377,24 @@ div {
   width: 40rem;
 }
 
-.deal .content {
-  position: absolute;
+.deal .content-deal {
   flex: 1 1 42rem;
   -webkit-box-flex: 1;
   -ms-flex: 1 1 42rem;
-  margin-top: 2950px;
 }
 
-.deal .content span {
+.deal .content-deal span {
   color: #eb4d4b;
   font-size: 1.7rem;
 }
 
-.deal .content h3 {
+.deal .content-deal h3 {
   color: #130f40;
   font-size: 3rem;
   padding: .5rem 0;
 }
 
-.deal .content p {
+.deal .content-deal p {
   color: #666;
   font-size: 2rem;
 }
@@ -1972,182 +1987,190 @@ select {
   margin-top: 1rem;
 }
 
-.checkout form{
+.checkout form {
   max-width: 50rem;
-  margin:0 auto;
-  border:var(--border);
-  padding:2rem;
+  margin: 0 auto;
+  border: var(--border);
+  padding: 2rem;
 }
 
-.checkout form h3{
+.checkout form h3 {
   font-size: 2.5rem;
   text-transform: capitalize;
   padding: 2rem 0;
-  color:var(--black);
+  color: var(--black);
 }
 
-.checkout form .cart-items{
+.checkout form .cart-items {
   background-color: var(--black);
-  padding:2rem;
+  padding: 2rem;
   padding-top: 0;
 }
 
-.checkout form .cart-items h3{
-  color:var(--white);
+.checkout form .cart-items h3 {
+  color: var(--white);
 }
 
-.checkout form .cart-items p{
+.checkout form .cart-items p {
   display: flex;
   align-items: center;
-  gap:1.5rem;
+  gap: 1.5rem;
   justify-content: space-between;
-  margin:1rem 0;
+  margin: 1rem 0;
   line-height: 1.5;
   font-size: 2rem;
 }
 
-.checkout form .cart-items p .name{
-  color:var(--light-color);
+.checkout form .cart-items p .name {
+  color: var(--light-color);
 }
 
-.checkout form .cart-items p .price{
-  color:var(--yellow);
+.checkout form .cart-items p .price {
+  color: var(--yellow);
 }
 
-.checkout form .cart-items .grand-total{
+.checkout form .cart-items .grand-total {
   background-color: var(--white);
-  padding:.5rem 1.5rem;
+  padding: .5rem 1.5rem;
 }
 
-.checkout form .cart-items .grand-total .price{
-  color:var(--red);
+.checkout form .cart-items .grand-total .price {
+  color: var(--red);
 }
 
-.checkout form .user-info p{ 
+.checkout form .user-info p {
   font-size: 2rem;
   line-height: 1.5;
-  padding:1rem 0;
+  padding: 1rem 0;
 }
 
-.checkout form .user-info p i{
-  color:var(--light-color);
+.checkout form .user-info p i {
+  color: var(--light-color);
   margin-right: 1rem;
 }
 
-.checkout form .user-info p span{
-  color:var(--black);
+.checkout form .user-info p span {
+  color: var(--black);
 }
 
-.checkout form .user-info .box{
+.checkout form .user-info .box {
   width: 100%;
-  border:var(--border);
-  padding:1.4rem;
+  border: var(--border);
+  padding: 1.4rem;
   margin-top: 2rem;
   margin-bottom: 1rem;
   font-size: 1.8rem;
 }
 
-.orders .box-container{
+.orders .box-container {
   display: flex;
   flex-wrap: wrap;
-  gap:1.5rem;
+  gap: 1.5rem;
   align-items: flex-start;
 }
 
-.orders .box-container .box{
-  padding:1rem 2rem;
-  border:var(--border);
-  flex:1 1 40rem;
+.orders .box-container .box {
+  padding: 1rem 2rem;
+  border: var(--border);
+  flex: 1 1 40rem;
 }
 
-.orders .box-container .box p{
+.orders .box-container .box p {
   line-height: 1.5;
-  margin:1rem 0;
+  margin: 1rem 0;
   font-size: 2rem;
-  color:var(--light-color);
+  color: var(--light-color);
 }
 
-.orders .box-container .box p span{
-  color:var(--black);
+.orders .box-container .box p span {
+  color: var(--black);
 }
 
-.message{
+.message {
   position: sticky;
-  top:0;
+  top: 0;
   max-width: 1200px;
-  margin:0 auto;
-  padding:2rem;
+  margin: 0 auto;
+  padding: 2rem;
   display: flex;
   align-items: center;
-  gap:1rem;
+  gap: 1rem;
   justify-content: space-between;
   background-color: var(--yellow);
 }
 
-.message span{
+.message span {
   font-size: 2rem;
-  color:var(--black);
+  color: var(--black);
 }
 
-.message i{
+.message i {
   font-size: 2.5rem;
-  color:var(--red);
+  color: var(--red);
   cursor: pointer;
 }
 
-.message i:hover{
-  color:var(--black);
+.message i:hover {
+  color: var(--black);
 }
 
-
+/*subscribe btn*/
 .newsletter {
   height: 350px;
 }
 
-.newsletter .content {
+.newsletter .content-sub {
   max-width: 70rem;
   margin: 1rem auto;
   text-align: center;
   position: relative;
-  margin-top: -250px;
   justify-content: center;
-  margin-left: -400px;
+
 }
 
-.newsletter .content p {
+.newsletter .content-sub p {
   font-size: 1.5rem;
   line-height: 2;
   color: #10221b;
 }
 
-.newsletter .content form {
-  margin-top: 2rem;
-  background: #fff;
-  border-radius: 5rem;
-  border: 0.2rem solid #10221b;
-  padding: .7rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
+
+.input-group-sub {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
 }
 
-.newsletter .content form .email {
-  width: 100%;
-  background: none;
-  text-transform: none;
-  font-size: 1.6rem;
-  color: #10221b;
-  padding: 0 1.3rem;
+.input-sub {
+  min-height: 50px;
+  max-width: 70rem;
+  padding: 0 1rem;
+  color: #000;
+  font-size: 15px;
+  border: 1px solid #10221b;
+  border-radius: 6px 0 0 6px;
+  background-color: transparent;
 }
 
-.newsletter .content form .btn {
-  margin-top: 0;
-  border-radius: 5rem;
-  background: #10221b;
+.button--submit {
+  min-height: 50px;
+  padding: .5em 1em;
+  border: none;
+  border-radius: 0 6px 6px 0;
+  background-color: #101A24;
   color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color .3s ease-in-out;
 }
 
-.newsletter .content form .btn:hover {
-  background: none;
-  color: #10221b;
+.button--submit:hover {
+  background-color: #5e5dcd;
+}
+
+.input-sub:focus,
+.input-sub:focus-visible {
+  border-color: #3898EC;
+  outline: none;
 }

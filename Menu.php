@@ -37,7 +37,6 @@ include 'Components/add_cart.php';
         </div>
         <div class="products">
             <div class="box-container">
-
                 <?php
                 $select_products = $conn->prepare("SELECT * FROM `product`");
                 $select_products->execute();
