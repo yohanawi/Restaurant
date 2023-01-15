@@ -58,11 +58,11 @@ $query_about = mysqli_query($connection, $sql_about);
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="white-box">
-                            <section class="add-about">
+                            <div class="form-container1">
                                 <form action="./functions/new.php" method="POST" enctype="multipart/form-data">
                                     <h3>Add About Section</h3>
                                     <div class="inputGroup-sm-12">
-                                        <textarea class="about-section" type="text" required="" name="about" placeholder="Enter About"></textarea>
+                                        <textarea type="text" required="" name="about" placeholder="Enter About" class="box"></textarea>
                                     </div>
                                     <center>
                                         <button type="submit" value="about" name="about" class="about-btn">
@@ -73,7 +73,7 @@ $query_about = mysqli_query($connection, $sql_about);
                                         </button>
                                     </center>
                                 </form>
-                            </section>
+                            </div>
                         </div>
                     </div>
                 </div>

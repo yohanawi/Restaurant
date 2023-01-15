@@ -100,7 +100,7 @@ if (isset($_POST['submit'])) {
             </div>
             <!-- /row -->
             <div class="row">
-               <div class="col-sm-12">
+               <div class="col-sm-6">
                   <div class="white-box">
                      <?php
                      if (isset($message)) {
@@ -114,14 +114,14 @@ if (isset($_POST['submit'])) {
                         }
                      }
                      ?>
-                     <section class="form-container">
+                     <section class="form-container-pro">
                         <form action="" method="POST">
                            <h3>update profile</h3>
-                           <input type="text" name="name" maxlength="20" class="box" oninput="this.value = this.value.replace(/\s/g, '')" placeholder="<?= $fetch_profile['name']; ?>">
+                           <input type="text" name="name" maxlength="20" placeholder="<?= $fetch_profile['name']; ?>" class="box" oninput="this.value = this.value.replace(/\s/g, '')">
                            <input type="password" name="old_pass" maxlength="20" placeholder="enter your old password" class="box" oninput="this.value = this.value.replace(/\s/g, '')">
                            <input type="password" name="new_pass" maxlength="20" placeholder="enter your new password" class="box" oninput="this.value = this.value.replace(/\s/g, '')">
                            <input type="password" name="confirm_pass" maxlength="20" placeholder="confirm your new password" class="box" oninput="this.value = this.value.replace(/\s/g, '')">
-                           <input type="submit" value="update now" name="submit" class="btn">
+                           <input type="submit" value="update now" name="submit" class="btn1">
                         </form>
                      </section>
                   </div>

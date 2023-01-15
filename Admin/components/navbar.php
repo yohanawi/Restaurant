@@ -30,8 +30,8 @@
             <li class="nav-small-cap m-t-10">--- Report</li>
             <li> <a href="#" class="waves-effect"><i data-icon="P" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Reports<span class="fa arrow"></span></span></a>
                 <ul class="nav nav-second-level">
-                    <li><a href="../functions/Order-report.php">Order report</a></li>
-                    <li><a href="../functions/Booking-report.php">Booking report</a></li>
+                    <li><a href="/Admin/Booking-report.php">Booking report</a></li>
+                    <li><a href="/Admin/Order-report.php">Order report</a></li>
                 </ul>
             </li>
             <li><a href="/Admin/admin_login.php" class="waves-effect"><i class="icon-logout fa-fw"></i> <span class="hide-menu">Log out</span></a></li>

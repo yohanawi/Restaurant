@@ -1,6 +1,6 @@
 <?php
 
-require_once "db.php";
+require_once "functions/db.php";
 
 $sql_order = "SELECT * FROM orders";
 $query_order = mysqli_query($connection, $sql_order);
@@ -19,29 +19,29 @@ $query_order = mysqli_query($connection, $sql_order);
    <link rel="icon" type="image/png" sizes="16x16" href="../Asset/icon.png">
    <title>Restaurant</title>
    <!-- Bootstrap Core CSS -->
-   <link href="../bootstrap/dist/css/bootstrap-grid.min.css" rel="stylesheet">
-   <link href="/plugins/bower_components/bootstrap-extension/css/bootstrap-extension.css" rel="stylesheet">
-   <link href="/plugins/bower_components/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+   <link href="bootstrap/dist/css/bootstrap-grid.min.css" rel="stylesheet">
+   <link href="../plugins/bower_components/bootstrap-extension/css/bootstrap-extension.css" rel="stylesheet">
+   <link href="../plugins/bower_components/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
    <link href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" rel="stylesheet" type="text/css" />
    <!-- Menu CSS -->
-   <link href="/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css" rel="stylesheet">
+   <link href="../plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css" rel="stylesheet">
    <!-- animation CSS -->
-   <link href="../css/animate.css" rel="stylesheet">
+   <link href="css/animate.css" rel="stylesheet">
    <!-- Custom CSS -->
-   <link href="../css/style.css" rel="stylesheet">
+   <link href="css/style.css" rel="stylesheet">
    <!-- color CSS -->
-   <link href="../css/colors/blue.css" id="theme" rel="stylesheet">
+   <link href="css/colors/blue.css" id="theme" rel="stylesheet">
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
- <link href="../css/admin-css.css" rel="stylesheet">
+ <link href="css/admin-css.css" rel="stylesheet">
 </head>
 
 <body>
    <div id="wrapper">
       <!--header-->
-      <?php include '../components/header.php'; ?>
+      <?php include './components/header.php'; ?>
       <!-- Left navbar-header -->
-      <?php include '../components/navbar.php'; ?>
+      <?php include './components/navbar.php'; ?>
       <!-- Page Content -->
       <div id="page-wrapper">
          <div class="container-fluid">
@@ -110,29 +110,29 @@ $query_order = mysqli_query($connection, $sql_order);
             </div>
             <!-- /.row -->
             <!-- .right-sidebar -->
-            <?php include '../components/sidebar.php'; ?>
+            <?php include './components/sidebar.php'; ?>
          </div>
          <!-- /.container-fluid -->
-         <?php include '../components/footer.php'; ?>
+         <?php include './components/footer.php'; ?>
       </div>
       <!-- /#page-wrapper -->
    </div>
    <!-- /#wrapper -->
    <!-- jQuery -->
-   <script src="/plugins/bower_components/jquery/dist/jquery.min.js"></script>
+   <script src="../plugins/bower_components/jquery/dist/jquery.min.js"></script>
    <!-- Bootstrap Core JavaScript -->
-   <script src="../bootstrap/dist/js/tether.min.js"></script>
-   <script src="../bootstrap/dist/js/bootstrap.min.js"></script>
-   <script src="/plugins/bower_components/bootstrap-extension/js/bootstrap-extension.min.js"></script>
+   <script src="bootstrap/dist/js/tether.min.js"></script>
+   <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+   <script src="../plugins/bower_components/bootstrap-extension/js/bootstrap-extension.min.js"></script>
    <!-- Menu Plugin JavaScript -->
-   <script src="/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>
+   <script src="../plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>
    <!--slimscroll JavaScript -->
-   <script src="../js/jquery.slimscroll.js"></script>
+   <script src="js/jquery.slimscroll.js"></script>
    <!--Wave Effects -->
-   <script src="../js/waves.js"></script>
+   <script src="js/waves.js"></script>
    <!-- Custom Theme JavaScript -->
-   <script src="../js/custom.min.js"></script>
-   <script src="/plugins/bower_components/datatables/jquery.dataTables.min.js"></script>
+   <script src="js/custom.min.js"></script>
+   <script src="../plugins/bower_components/datatables/jquery.dataTables.min.js"></script>
    <!-- start - This is for export functionality only -->
    <script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
@@ -190,7 +190,7 @@ $query_order = mysqli_query($connection, $sql_order);
       });
    </script>
    <!--Style Switcher -->
-   <script src="/plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
+   <script src="../plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
 </body>
 
 </html>

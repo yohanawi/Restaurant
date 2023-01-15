@@ -134,14 +134,14 @@ $query_category = mysqli_query($connection, $sql_category);
                                  <span>Update image</span>
                                  <input type="file" name="image" class="box" accept="image/jpg, image/jpeg, image/png, image/webp">
                                  <div class="flex-btn">
-                                    <input type="submit" value="update" class="btn" name="update">
+                                    <input type="submit" value="update" class="btn1" name="update">
                                     <a href="./product.php" class="option-btn">go back</a>
                                  </div>
                               </form>
                         <?php
                            }
                         } else {
-                           echo '<p class="empty">no products added yet!</p>';
+                           echo '<center><p class="empty">no products added yet!</p></center>';
                         }
                         ?>
                      </section>
