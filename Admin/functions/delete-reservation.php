@@ -1,16 +1,17 @@
 <?php
     require_once "db.php";
+    
     if (isset($_POST["id"])) {
         $id = $_POST["id"];
-        $sql = "DELETE FROM category WHERE id=?";
+        $sql = "DELETE FROM book WHERE id=?";
         $stmt = $db->prepare($sql);
         try {
             $stmt->execute([$id]);
-            header('Location:../category.php?deleted');
+            header('Location:../placed_book.php?deleted');
         } catch (Exception $e) {
             $e->getMessage();
             echo "Error";
         }
     } else {
-        header('Location:../category.php?del_error');
+        header('Location:../placed_book?del_error');
     }

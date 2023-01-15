@@ -1,11 +1,5 @@
 <?php
-/* DATABASE CONNECTION*/
-$db_name = 'mysql:host=localhost;dbname=restaurants';
-$user_name = 'root';
-$user_password = '';
-
-$conn = new PDO($db_name, $user_name, $user_password);
-/*DATABASE CONNECTION */
+require_once "components/connection.php"; //databse connection
 require_once "functions/db.php";
 session_start();
 
@@ -50,8 +44,8 @@ if (isset($_POST['update'])) {
       }
    }
 }
-$sql_admin = "SELECT * FROM admin";
-$query_admin = mysqli_query($connection, $sql_admin);
+$sql_category = 'SELECT * FROM category';
+$query_category = mysqli_query($connection, $sql_category);
 ?>
 
 <!DOCTYPE html>
@@ -75,6 +69,9 @@ $query_admin = mysqli_query($connection, $sql_admin);
    <!-- animation CSS -->
    <link href="css/animate.css" rel="stylesheet">
    <!-- Custom CSS -->
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+   <link href="css/admin-css.css" rel="stylesheet">
    <link href="css/style.css" rel="stylesheet">
    <!-- color CSS -->
    <link href="css/colors/blue.css" id="theme" rel="stylesheet">
@@ -104,9 +101,7 @@ $query_admin = mysqli_query($connection, $sql_admin);
                <div class="col-sm-12">
                   <div class="white-box">
                      <section class="update-product">
-
-                        <h1 class="heading">update product</h1>
-
+                        <h1 class="heading">Update Product</h1>
                         <?php
                         $update_id = $_GET['update'];
                         $show_products = $conn->prepare("SELECT * FROM `product` WHERE id = ?");
@@ -118,19 +113,25 @@ $query_admin = mysqli_query($connection, $sql_admin);
                                  <input type="hidden" name="pid" value="<?= $fetch_products['id']; ?>">
                                  <input type="hidden" name="old_image" value="<?= $fetch_products['image']; ?>">
                                  <img src="../uploaded_img/<?= $fetch_products['image']; ?>" alt="">
-                                 <span>update name</span>
+                                 <span>Update name</span>
                                  <input type="text" required placeholder="enter product name" name="name" maxlength="100" class="box" value="<?= $fetch_products['name']; ?>">
-                                 <span>update price</span>
+                                 <span>Update price</span>
                                  <input type="number" min="0" max="9999999999" required placeholder="enter product price" name="price" onkeypress="if(this.value.length == 10) return false;" class="box" value="<?= $fetch_products['price']; ?>">
-                                 <span>update category</span>
-                                 <select name="category" class="box" required>
-                                    <option selected value="<?= $fetch_products['category']; ?>"><?= $fetch_products['category']; ?></option>
-                                    <option value="main dish">main dish</option>
-                                    <option value="fast food">fast food</option>
-                                    <option value="drinks">drinks</option>
-                                    <option value="desserts">desserts</option>
-                                 </select>
-                                 <span>update image</span>
+                                 <span>Update description</span>
+                                 <input type="text" required placeholder="enter product description" name="description" maxlength="1000" class="box" value="<?= $fetch_products['description']; ?>">
+                                 <span>Update category</span>
+                                 <?php
+                                 $options = "";
+                                 while ($row2 = mysqli_fetch_array($query_category)) {
+                                    $options = $options . "<option>$row2[1]</option>";
+                                 }
+                                 ?>
+                                 <div class="inputGroup">
+                                    <select name="category" class="box" required value="<?= $fetch_products['category']; ?>">
+                                       <?php echo $options; ?>
+                                    </select>
+                                 </div>
+                                 <span>Update image</span>
                                  <input type="file" name="image" class="box" accept="image/jpg, image/jpeg, image/png, image/webp">
                                  <div class="flex-btn">
                                     <input type="submit" value="update" class="btn" name="update">
@@ -143,9 +144,7 @@ $query_admin = mysqli_query($connection, $sql_admin);
                            echo '<p class="empty">no products added yet!</p>';
                         }
                         ?>
-
                      </section>
-
                   </div>
                </div>
             </div>

@@ -1,10 +1,5 @@
 <?php
-/* DATABASE CONNECTION*/
-$db_name = 'mysql:host=localhost;dbname=restaurants';
-$user_name = 'root';
-$user_password = '';
-
-$conn = new PDO($db_name, $user_name, $user_password);
+require_once "components/connection.php"; //databse connection
 
 require_once "functions/db.php";
 
@@ -39,6 +34,8 @@ $query_message = mysqli_query($connection, $sql_message);
     <!-- color CSS -->
     <link href="css/colors/blue.css" id="theme" rel="stylesheet">
     <!--admin css-->
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link href="css/admin-css.css" rel="stylesheet">
 </head>
 
@@ -133,7 +130,6 @@ $query_message = mysqli_query($connection, $sql_message);
                         </div>
                     </div>
                 </div>
-
                 <!-- /.row -->
                 <!-- .right-sidebar -->
                 <?php include './components/sidebar.php'; ?>

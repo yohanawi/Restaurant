@@ -1,7 +1,6 @@
 <?php
 require_once "functions/db.php";
 
-
 $sql_about = "SELECT * FROM about";
 $query_about = mysqli_query($connection, $sql_about);
 ?>
@@ -17,6 +16,8 @@ $query_about = mysqli_query($connection, $sql_about);
     <meta name="author" content="">
     <link rel="icon" type="image/png" sizes="16x16" href="../Asset/icon.png">
     <title>Restaurant</title>
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <!-- Bootstrap Core CSS -->
     <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../plugins/bower_components/bootstrap-extension/css/bootstrap-extension.css" rel="stylesheet">
@@ -57,24 +58,26 @@ $query_about = mysqli_query($connection, $sql_about);
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="white-box">
-                            <section class="add-products">
+                            <section class="add-about">
                                 <form action="./functions/new.php" method="POST" enctype="multipart/form-data">
                                     <h3>Add About Section</h3>
                                     <div class="inputGroup-sm-12">
-                                        <textarea type="text" required="" name="about" placeholder="Enter About" style="height: 150px;"></textarea>
+                                        <textarea class="about-section" type="text" required="" name="about" placeholder="Enter About"></textarea>
                                     </div>
-                                    <button type="submit" value="about" name="about" class="about-btn">
-                                        <svg class="css-i6dzq1" stroke-linejoin="round" stroke-linecap="round" fill="none" stroke-width="2" stroke="#FFFFFF" height="24" width="24" viewBox="0 0 24 24">
-                                            <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
-                                        </svg>
-                                        Edit
-                                    </button>
+                                    <center>
+                                        <button type="submit" value="about" name="about" class="about-btn">
+                                            <svg class="css-i6dzq1" stroke-linejoin="round" stroke-linecap="round" fill="none" stroke-width="2" stroke="#FFFFFF" height="24" width="24" viewBox="0 0 24 24">
+                                                <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                                            </svg>
+                                            Edit
+                                        </button>
+                                    </center>
                                 </form>
                             </section>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- /.row -->
                 <!-- .right-sidebar -->
                 <?php include './components/sidebar.php'; ?>

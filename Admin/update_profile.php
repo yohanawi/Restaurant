@@ -1,25 +1,15 @@
 <?php
-/* DATABASE CONNECTION*/
-$db_name = 'mysql:host=localhost;dbname=restaurants';
-$user_name = 'root';
-$user_password = '';
+require_once "components/connection.php"; //databse connection
 
-$conn = new PDO($db_name, $user_name, $user_password);
-/*DATABASE CONNECTION */
 require_once "functions/db.php";
 session_start();
-
 $admin_id = $_SESSION['admin_id'];
-
 if (!isset($admin_id)) {
    header('location:admin_login.php');
 }
-
 if (isset($_POST['submit'])) {
-
    $name = $_POST['name'];
    $name = filter_var($name, FILTER_SANITIZE_STRING);
-
    if (!empty($name)) {
       $select_name = $conn->prepare("SELECT * FROM `admin` WHERE name = ?");
       $select_name->execute([$name]);
@@ -30,7 +20,6 @@ if (isset($_POST['submit'])) {
          $update_name->execute([$name, $admin_id]);
       }
    }
-
    $empty_pass = 'da39a3ee5e6b4b0d3255bfef95601890afd80709';
    $select_old_pass = $conn->prepare("SELECT password FROM `admin` WHERE id = ?");
    $select_old_pass->execute([$admin_id]);
@@ -59,7 +48,6 @@ if (isset($_POST['submit'])) {
       }
    }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -73,6 +61,8 @@ if (isset($_POST['submit'])) {
    <meta name="author" content="">
    <link rel="icon" type="image/png" sizes="16x16" href="../Asset/icon.png">
    <title>Restaurant</title>
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
    <!-- Bootstrap Core CSS -->
    <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
    <link href="../plugins/bower_components/bootstrap-extension/css/bootstrap-extension.css" rel="stylesheet">
@@ -83,6 +73,7 @@ if (isset($_POST['submit'])) {
    <!-- animation CSS -->
    <link href="css/animate.css" rel="stylesheet">
    <!-- Custom CSS -->
+   <link href="css/admin-css.css" rel="stylesheet">
    <link href="css/style.css" rel="stylesheet">
    <!-- color CSS -->
    <link href="css/colors/blue.css" id="theme" rel="stylesheet">
@@ -102,7 +93,7 @@ if (isset($_POST['submit'])) {
                <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                   <ol class="breadcrumb">
                      <li><a href="#">Dashboard</a></li>
-                     <li class="active">Account</li>
+                     <li class="active">Update Account</li>
                   </ol>
                </div>
                <!-- /.col-lg-12 -->
@@ -111,8 +102,19 @@ if (isset($_POST['submit'])) {
             <div class="row">
                <div class="col-sm-12">
                   <div class="white-box">
+                     <?php
+                     if (isset($message)) {
+                        foreach ($message as $message) {
+                           echo '
+                              <div class="message">
+                                 <span>' . $message . '</span>
+                                 <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
+                              </div>
+                              ';
+                        }
+                     }
+                     ?>
                      <section class="form-container">
-
                         <form action="" method="POST">
                            <h3>update profile</h3>
                            <input type="text" name="name" maxlength="20" class="box" oninput="this.value = this.value.replace(/\s/g, '')" placeholder="<?= $fetch_profile['name']; ?>">
@@ -121,9 +123,7 @@ if (isset($_POST['submit'])) {
                            <input type="password" name="confirm_pass" maxlength="20" placeholder="confirm your new password" class="box" oninput="this.value = this.value.replace(/\s/g, '')">
                            <input type="submit" value="update now" name="submit" class="btn">
                         </form>
-
                      </section>
-
                   </div>
                </div>
             </div>

@@ -1,13 +1,7 @@
 <?php
-/* DATABASE CONNECTION*/
-$db_name = 'mysql:host=localhost;dbname=restaurants';
-$user_name = 'root';
-$user_password = '';
-
-$conn = new PDO($db_name, $user_name, $user_password);
+require_once "components/connection.php"; //databse connection
 
 require_once "functions/db.php";
-
 
 if (isset($_GET['id'])) {
     $inboxid = $_GET['id'];
@@ -68,7 +62,7 @@ if (isset($_GET['id'])) {
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="white-box">
-                        <div class="row">
+                            <div class="row">
                                 <?php
                                 $query = mysqli_query($connection, $sql);
                                 while ($row = mysqli_fetch_assoc($query)) {

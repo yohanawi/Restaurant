@@ -1,25 +1,17 @@
 <?php
-/* DATABASE CONNECTION*/
-$db_name = 'mysql:host=localhost;dbname=restaurants';
-$user_name = 'root';
-$user_password = '';
-
-$conn = new PDO($db_name, $user_name, $user_password);
-    /*DATABASE CONNECTION */
+require_once "components/connection.php"; //databse connection
 require_once "functions/db.php";
 
 $sql_book = "SELECT * FROM book";
 $query_book = mysqli_query($connection, $sql_book);
 
-if(isset($_POST['update_status'])){
-
+if (isset($_POST['update_status'])) {
     $order_id = $_POST['order_id'];
     $status = $_POST['status'];
     $update_status = $conn->prepare("UPDATE `book` SET status = ? WHERE id = ?");
     $update_status->execute([$status, $order_id]);
     $message[] = 'status updated!';
- 
- }
+}
 ?>
 
 <!DOCTYPE html>
@@ -46,6 +38,9 @@ if(isset($_POST['update_status'])){
     <link href="css/style.css" rel="stylesheet">
     <!-- color CSS -->
     <link href="css/colors/blue.css" id="theme" rel="stylesheet">
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link href="css/admin-css.css" rel="stylesheet">
 </head>
 
 <body>
@@ -95,7 +90,6 @@ if(isset($_POST['update_status'])){
                                                 </select>
                                                 <div class="flex-btn">
                                                     <input type="submit" value="update" class="btn" name="update_status">
-                                                    <a href="placed_orders.php?delete=<?= $fetch_book['id']; ?>" class="delete-btn" onclick="return confirm('delete this order?');">delete</a>
                                                 </div>
                                             </form>
                                         </div>
@@ -178,7 +172,7 @@ if(isset($_POST['update_status'])){
                                                                         <h4 class="modal-title">Are you sure you want to delete this booking?</h4>
                                                                     </div>
                                                                     <div class="modal-footer">
-                                                                        <form action="functions/delete-user.php" method="post">
+                                                                        <form action="functions/delete-reservation.php" method="post">
                                                                             <input type="hidden" name="id" value="' . $row["id"] . '"/>
                                                                             <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
                                                                             <button type="submit" class="btn btn-danger waves-effect waves-light">Delete</button>

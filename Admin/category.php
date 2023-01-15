@@ -1,10 +1,5 @@
 <?php
-/* DATABASE CONNECTION*/
-$db_name = 'mysql:host=localhost;dbname=restaurants';
-$user_name = 'root';
-$user_password = '';
-
-$conn = new PDO($db_name, $user_name, $user_password);
+require_once "components/connection.php"; //databse connection
 require_once "functions/db.php";
 
 $sql = 'SELECT * FROM category';
@@ -17,7 +12,7 @@ if (isset($_POST['add'])) {
     $image = filter_var($image, FILTER_SANITIZE_STRING);
     $image_size = $_FILES['image']['size'];
     $image_tmp_name = $_FILES['image']['tmp_name'];
-    $image_folder = '../uploaded_img/'.$image;
+    $image_folder = '../uploaded_img/' . $image;
     //-- Insert Data Into DB --//
     $select_category = $conn->prepare("SELECT * FROM `category` WHERE category = ?");
     $select_category->execute([$category]);
@@ -26,13 +21,12 @@ if (isset($_POST['add'])) {
         $message[] = 'product name already exist!';
         header('location: category.php');
     } else {
-            move_uploaded_file($image_tmp_name, $image_folder);
-            $insert_category = $conn->prepare("INSERT INTO `category`(category, image) VALUES(?,?)");
-            $insert_category->execute([$category, $image]);
+        move_uploaded_file($image_tmp_name, $image_folder);
+        $insert_category = $conn->prepare("INSERT INTO `category`(category, image) VALUES(?,?)");
+        $insert_category->execute([$category, $image]);
 
-            $message[] = 'new Category added!';
-            header('location: category.php');
-        
+        $message[] = 'new Category added!';
+        header('location: category.php');
     }
 };
 ?>
@@ -58,6 +52,9 @@ if (isset($_POST['add'])) {
     <!-- animation CSS -->
     <link href="css/animate.css" rel="stylesheet">
     <!-- Custom CSS -->
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link href="css/admin-css.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <!-- color CSS -->
     <link href="css/colors/blue.css" id="theme" rel="stylesheet">
@@ -86,6 +83,18 @@ if (isset($_POST['add'])) {
                 <div class="row">
                     <div class="col-md-6">
                         <div class="white-box">
+                            <?php
+                            if (isset($message)) {
+                                foreach ($message as $message) {
+                                    echo '
+                                        <div class="message">
+                                            <span>' . $message . '</span>
+                                            <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
+                                        </div>
+                                        ';
+                                }
+                            }
+                            ?>
                             <h3 class="box-title m-b-0">Add Category</h3>
                             <p class="text-muted m-b-30 font-13"> (Food category) </p>
                             <div class="row">

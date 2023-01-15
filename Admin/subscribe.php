@@ -2,8 +2,8 @@
 
 require_once "functions/db.php";
 
-$sql_user = "SELECT * FROM user";
-$query_user = mysqli_query($connection, $sql_user);
+$sql_subscribe = "SELECT * FROM subscribe";
+$query_subscribe = mysqli_query($connection, $sql_subscribe);
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +49,7 @@ $query_user = mysqli_query($connection, $sql_user);
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <ol class="breadcrumb">
                             <li><a href="#">Dashboard</a></li>
-                            <li class="active">Manage-user</li>
+                            <li class="active">Subscribe</li>
                         </ol>
                     </div>
                     <!-- /.col-lg-12 -->
@@ -79,32 +79,30 @@ $query_user = mysqli_query($connection, $sql_user);
                                         </div>';
                             }
                             ?>
-                            <h3 class="box-title m-b-0">Users ( <x style="color: orange;"><?php echo mysqli_num_rows($query_user); ?></x> )</h3>
+                            <h3 class="box-title m-b-0">Subscribe ( <x style="color: orange;"><?php echo mysqli_num_rows($query_subscribe); ?></x> )</h3>
                             <p class="text-muted m-b-30">Export data to Copy, CSV, Excel, PDF & Print</p>
                             <div class="table-responsive">
                                 <table id="example23" class="display nowrap" cellspacing="0" width="100%">
                                     <?php
-                                    if (mysqli_num_rows($query_user) == 0) {
+                                    if (mysqli_num_rows($query_subscribe) == 0) {
                                         echo "<i style='color:brown;'>No Users Here :( </i> ";
                                     } else {
                                         echo '
                                                     <thead>
                                                         <tr>
-                                                            <th>Name</th>
+                                                            <th>ID</th>
                                                             <th>Email</th>
-                                                            <th>Phone</th>
                                                             <th>Action</th>
                                                         </tr>
                                                     </thead>
                                                 <tbody>';
                                     }
-                                    while ($row = mysqli_fetch_array($query_user)) {
+                                    while ($row = mysqli_fetch_array($query_subscribe)) {
                                         // $id = $row["id"]
                                         echo '
                                                     <tr>
-                                                        <td>' . $row["name"] . '</td>
-                                                        <td>' . $row["email"] . '</td>
-                                                        <td>' . $row["number"] . '</td>                                               
+                                                        <td>' . $row["id"] . '</td>
+                                                        <td>' . $row["subscribe"] . '</td>                                            
                                                         <td><a href="#"><i class="fa fa-trash" data-toggle="modal" data-target="#responsive-modal' . $row["id"] . '" title="remove" style="color:red;"></i></a></td>
                                                         <!-- /.modal -->
                                                         <div id="responsive-modal' . $row["id"] . '" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
@@ -112,7 +110,7 @@ $query_user = mysqli_query($connection, $sql_user);
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
                                                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                                        <h4 class="modal-title">Are you sure you want to delete this user?</h4>
+                                                                        <h4 class="modal-title">Are you sure you want to delete this Subscribe?</h4>
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <form action="functions/delete-user.php" method="post">

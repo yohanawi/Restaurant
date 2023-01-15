@@ -1,11 +1,5 @@
 <?php
-/* DATABASE CONNECTION*/
-$db_name = 'mysql:host=localhost;dbname=restaurants';
-$user_name = 'root';
-$user_password = '';
-
-$conn = new PDO($db_name, $user_name, $user_password);
-/*DATABASE CONNECTION */
+require_once "components/connection.php"; //databse connection
 require_once "functions/db.php";
 
 $sql_order = "SELECT * FROM orders";
@@ -53,6 +47,9 @@ if (isset($_GET['delete'])) {
    <link href="css/style.css" rel="stylesheet">
    <!-- color CSS -->
    <link href="css/colors/blue.css" id="theme" rel="stylesheet">
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+ <link href="css/admin-css.css" rel="stylesheet">
 </head>
 
 <body>
@@ -162,8 +159,7 @@ if (isset($_GET['delete'])) {
                                                             <th>Total products</th>
                                                             <th>Total Price</th>
                                                             <th>Date</th>
-                                                            <th>Status</th>
-                                                           
+                                                            <th>Status</th>                                                         
                                                         </tr>
                                                     </thead>
                                                 <tbody>';
@@ -181,7 +177,6 @@ if (isset($_GET['delete'])) {
                                                         <td>' . $row["total_price"] . '</td>  
                                                         <td>' . $row["placed_on"] . '</td>  
                                                         <td>' . $row["payment_status"] . '</td>                                           
-                                                        
                                                         <!-- End Modal -->
                                                     </tr>
                                                 ';

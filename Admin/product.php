@@ -1,13 +1,7 @@
 <?php
-/* DATABASE CONNECTION*/
-$db_name = 'mysql:host=localhost;dbname=restaurants';
-$user_name = 'root';
-$user_password = '';
-
-$conn = new PDO($db_name, $user_name, $user_password);
+require_once "components/connection.php"; //databse connection
 
 require_once "functions/db.php";
-
 
 $sql_product = "SELECT * FROM product";
 $query_product = mysqli_query($connection, $sql_product);
@@ -27,7 +21,7 @@ if (isset($_POST['add_product'])) {
     $image = filter_var($image, FILTER_SANITIZE_STRING);
     $image_size = $_FILES['image']['size'];
     $image_tmp_name = $_FILES['image']['tmp_name'];
-    $image_folder = '../uploaded_img/'.$image;
+    $image_folder = '../uploaded_img/' . $image;
     $select_product = $conn->prepare("SELECT * FROM `product` WHERE name = ?");
     $select_product->execute([$name]);
 
@@ -38,12 +32,10 @@ if (isset($_POST['add_product'])) {
         move_uploaded_file($image_tmp_name, $image_folder);
         $insert_product = $conn->prepare("INSERT INTO `product`(name, price, description, category, image) VALUES(?,?,?,?,?)");
         $insert_product->execute([$name, $price, $description, $category, $image]);
-        
-                $message[] = 'new product added!';
-                header('location: product.php');
-        
-        }
-    };
+        $message[] = 'new product added!';
+        header('location: product.php');
+    }
+};
 
 if (isset($_GET['delete'])) {
 
@@ -80,6 +72,8 @@ if (isset($_GET['delete'])) {
     <link href="../plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css" rel="stylesheet">
     <!-- animation CSS -->
     <link href="css/animate.css" rel="stylesheet">
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet">
     <!-- color CSS -->
@@ -157,6 +151,18 @@ if (isset($_GET['delete'])) {
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="white-box">
+                            <?php
+                            if (isset($message)) {
+                                foreach ($message as $message) {
+                                    echo '
+                                        <div class="message">
+                                            <span>' . $message . '</span>
+                                            <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
+                                        </div>
+                                        ';
+                                }
+                            }
+                            ?>
                             <section class="show-products">
                                 <h3 class="heading">products added(<b style="color: orange;"><?php echo mysqli_num_rows($query_product); ?></b>)</h3>
                                 <div class="box-container">

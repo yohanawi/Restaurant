@@ -1,21 +1,18 @@
 <?php
-require_once "functions/db.php"; //databse connection
+
+require_once "functions/db.php";
 session_start();
 
-$admin_id = $_SESSION['admin_id'];
-
-if(!isset($admin_id)){
-   header('location:admin_login.php');
-}
-$sql_category = "SELECT * FROM category";
-$query_category = mysqli_query($connection, $sql_category);
 $sql_user = "SELECT * FROM user";
 $query_user = mysqli_query($connection, $sql_user);
-$sql_products = "SELECT * FROM product";
-$query_products = mysqli_query($connection, $sql_products);
-$sql_message = "SELECT * FROM messages";
-$query_message = mysqli_query($connection, $sql_message);
+$sql_orders = "SELECT * FROM orders";
+$query_orders = mysqli_query($connection, $sql_orders);
+$sql_subscribe = "SELECT * FROM subscribe";
+$query_subscribe = mysqli_query($connection, $sql_subscribe);
+$sql_book = "SELECT * FROM book";
+$query_book = mysqli_query($connection, $sql_book);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,16 +31,19 @@ $query_message = mysqli_query($connection, $sql_message);
     <link href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" rel="stylesheet" type="text/css" />
     <!-- Menu CSS -->
     <link href="../plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css" rel="stylesheet">
-    <!-- toast CSS -->
-    <link href="../plugins/bower_components/toast-master/css/jquery.toast.css" rel="stylesheet">
-    <!-- morris CSS -->
-    <link href="../plugins/bower_components/morrisjs/morris.css" rel="stylesheet">
     <!-- animation CSS -->
     <link href="css/animate.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet">
     <!-- color CSS -->
     <link href="css/colors/blue.css" id="theme" rel="stylesheet">
+    <!-- toast CSS -->
+    <link href="../plugins/bower_components/toast-master/css/jquery.toast.css" rel="stylesheet">
+    <!-- morris CSS -->
+    <link href="../plugins/bower_components/morrisjs/morris.css" rel="stylesheet">
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link href="css/admin-css.css" rel="stylesheet">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
@@ -57,18 +57,27 @@ $query_message = mysqli_query($connection, $sql_message);
         <!-- Page Content -->
         <div id="page-wrapper">
             <div class="container-fluid">
-                <?php include './components/path.php'; ?>
+                <div class="row bg-title">
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12"></div>
+                    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                        <ol class="breadcrumb">
+                            <li><a href="#">Dashboard</a></li>
+                        </ol>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /row -->
                 <div class="row">
                     <div class="col-md-12 col-lg-12 col-sm-12">
                         <div class="white-box">
                             <div class="row row-in">
                                 <div class="col-lg-3 col-sm-6 row-in-br">
                                     <div class="col-in row">
-                                        <div class="col-md-6 col-sm-6 col-xs-6"> <i data-icon="E" class="linea-icon linea-basic"></i>
-                                            <h5 class="text-muted vb">Orders</h5>
+                                        <div class="col-md-6 col-sm-6 col-xs-6"> <i data-icon="p" class="linea-icon linea-basic"></i>
+                                            <h5 class="text-muted vb">Mange Users</h5>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <h3 class="counter text-right m-t-15 text-danger"><?php echo mysqli_num_rows($query_category); ?></h3>
+                                            <h3 class="counter text-right m-t-15 text-danger"><?php echo mysqli_num_rows($query_user); ?></h3>
                                         </div>
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <div class="progress">
@@ -79,11 +88,11 @@ $query_message = mysqli_query($connection, $sql_message);
                                 </div>
                                 <div class="col-lg-3 col-sm-6 row-in-br  b-r-none">
                                     <div class="col-in row">
-                                        <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic" data-icon="&#xe01b;"></i>
-                                            <h5 class="text-muted vb">Products</h5>
+                                        <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic" data-icon="`"></i>
+                                            <h5 class="text-muted vb">Orders</h5>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <h3 class="counter text-right m-t-15 text-megna"><?php echo mysqli_num_rows($query_products); ?></h3>
+                                            <h3 class="counter text-right m-t-15 text-megna"><?php echo mysqli_num_rows($query_orders); ?></h3>
                                         </div>
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <div class="progress">
@@ -94,11 +103,11 @@ $query_message = mysqli_query($connection, $sql_message);
                                 </div>
                                 <div class="col-lg-3 col-sm-6 row-in-br">
                                     <div class="col-in row">
-                                        <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic" data-icon="&#xe00b;"></i>
-                                            <h5 class="text-muted vb">Messages</h5>
+                                        <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic" data-icon="<"></i>
+                                            <h5 class="text-muted vb">Reservation</h5>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <h3 class="counter text-right m-t-15 text-primary"><?php echo mysqli_num_rows($query_message); ?></h3>
+                                            <h3 class="counter text-right m-t-15 text-primary"><?php echo mysqli_num_rows($query_book); ?></h3>
                                         </div>
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <div class="progress">
@@ -110,10 +119,10 @@ $query_message = mysqli_query($connection, $sql_message);
                                 <div class="col-lg-3 col-sm-6  b-0">
                                     <div class="col-in row">
                                         <div class="col-md-6 col-sm-6 col-xs-6"> <i class="linea-icon linea-basic" data-icon="&#xe016;"></i>
-                                            <h5 class="text-muted vb">Users</h5>
+                                            <h5 class="text-muted vb">Subscribers</h5>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6">
-                                            <h3 class="counter text-right m-t-15 text-success"><?php echo mysqli_num_rows($query_user); ?></h3>
+                                            <h3 class="counter text-right m-t-15 text-success"><?php echo mysqli_num_rows($query_subscribe); ?></h3>
                                         </div>
                                         <div class="col-md-12 col-sm-12 col-xs-12">
                                             <div class="progress">
@@ -126,61 +135,21 @@ $query_message = mysqli_query($connection, $sql_message);
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12 col-lg-6 col-sm-12">
-                        <div class="white-box">
-                            <div id="myChart2" style="width:100%; max-width:600px; height:500px;"></div>
-                            <?php
-                            $chkresults2 = mysqli_query($connection, "SELECT date(date) AS date, COUNT(*) AS id FROM user GROUP BY date(date)");
-                            ?>
-                            <script>
-                                google.charts.load('current', {
-                                    packages: ['corechart']
-                                });
-                                google.charts.setOnLoadCallback(drawChart2);
 
-                                function drawChart2() {
-                                    // Set Data
-                                    var data = google.visualization.arrayToDataTable([
-                                        ['Date', 'Users'],
-                                        <?php
-                                        while ($row = mysqli_fetch_assoc($chkresults2)) {
-                                            echo "['" . $row["date"] . "'," . $row["id"] . "],";
-                                        }
-                                        ?>
-                                    ]);
-                                    // Set OptionsS
-                                    var options = {
-                                        title: 'Users',
-                                        hAxis: {
-                                            title: 'Date'
-                                        },
-                                        vAxis: {
-                                            title: 'ID'
-                                        },
-                                        legend: 'none'
-                                    };
-                                    // Draw
-                                    var chart = new google.visualization.LineChart(document.getElementById('myChart2'));
-                                    chart.draw(data, options);
-                                }
-                            </script>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- .right-sidebar -->
-        <?php include './components/sidebar.php'; ?>
+
+                
+                <!-- /.row -->
+                <!-- .right-sidebar -->
+                <?php include './components/sidebar.php'; ?>
             </div>
             <!-- /.container-fluid -->
             <?php include './components/footer.php'; ?>
-    </div>
-    <!-- /#page-wrapper -->
+        </div>
+        <!-- /#page-wrapper -->
     </div>
     <!-- /#wrapper -->
-   <!-- jQuery -->
-   <script src="../plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- jQuery -->
+    <script src="../plugins/bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="bootstrap/dist/js/tether.min.js"></script>
     <script src="bootstrap/dist/js/bootstrap.min.js"></script>
@@ -204,12 +173,11 @@ $query_message = mysqli_query($connection, $sql_message);
     <script src="../plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
     <script src="../plugins/bower_components/jquery-sparkline/jquery.charts-sparkline.js"></script>
     <script src="../plugins/bower_components/toast-master/js/jquery.toast.js"></script>
-    
     <script type="text/javascript">
         $(document).ready(function() {
             $.toast({
-                heading: 'Welcome to Restaurant',
-                text: 'You can view, edit, any things.',
+                heading: 'Welcome to Resturant admin',
+                text: 'view, edit and upload new posts to keep your users engaged.',
                 position: 'top-right',
                 loaderBg: '#ff6849',
                 icon: 'info',
@@ -218,8 +186,9 @@ $query_message = mysqli_query($connection, $sql_message);
             })
         });
     </script>
+    </script>
+    <!--Style Switcher -->
+    <script src="../plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
 </body>
-<!--Style Switcher -->
-<script src="../plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
 
 </html>
