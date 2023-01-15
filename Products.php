@@ -6,7 +6,7 @@ if (isset($_SESSION['user_id'])) {
 } else {
     $user_id = '';
 };
-
+include 'Components/add_cart.php';
 ?>
 <!DOCTYPE html>
 <html>

@@ -11,13 +11,14 @@
             <a href="#"> <i class="fas fa-phone"></i> +123-456-7890 </a>
             <a href="#"> <i class="fas fa-phone"></i> +111-222-3333 </a>
             <a href="#"> <i class="fas fa-envelope"></i>restaurant@gmail.com </a>
-            <a href="#"> <i class="fas fa-location"></i> mumbai, india</a>
+            <a href="#"> <i class="fas fa-location"></i> Colombo, Sri Lanka</a>
         </div>
         <div class="box">
             <h3>Navigation</h3>
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#about">Contatc</a>
+            <a href="/Order.php">View Order</a>
+            <a href="/view-reservation.php">View Booking</a>
+            <a href="/Cart.php">Cart</a>
+            <a href="/update_profile.php">Profile</a>
         </div>
         <div class="box">
             <h3>FOLLOW US</h3>
@@ -27,8 +28,8 @@
         </div>
         <div class="box">
             <h3>OPENING HOURS</h3>
-            <a href="#">Monday - Friday<br/>8:00 am to 9:00 pm</a>
-            <a href="#">Saturday <br/>8:00 am to 9:00 pm</a>
+            <a href="#">Monday - Friday<br />8:00 am to 9:00 pm</a>
+            <a href="#">Saturday <br />8:00 am to 9:00 pm</a>
             <a href="#">Sunday CLOSED</a>
         </div>
     </div>

@@ -23,6 +23,8 @@ include './Components/add_cart.php';
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!--font animation cdn link-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <!-- custom css file link  -->
     <link rel="stylesheet" href="Css/style.css">
 
@@ -39,8 +41,8 @@ include './Components/add_cart.php';
                             <img src="images/Group 4.png" alt="">
                         </div>
                         <div class="content">
-                            <h3>Welcome to Our Restaurant</h3>
-                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</span>
+                            <h3 class="animate__animated animate__fadeInLeft">Welcome to Our Restaurant</h3>
+                            <span class="animate__animated animate__fadeInLeft">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</span>
                             <br /><br />
                             <a href="/Menu.php" class="btn-menu">Menu</a>
                             <a href="/Reservation.php" class="btn-book">Book a table</a>
@@ -88,6 +90,9 @@ include './Components/add_cart.php';
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
+                <center>
+                    <a href="/Category.php" class="btn">View all</a>
+                </center>
             </div>
         </section>
         <section>
@@ -121,8 +126,8 @@ include './Components/add_cart.php';
                         if ($select_products->rowCount() > 0) {
                             while ($fetch_products = $select_products->fetch(PDO::FETCH_ASSOC)) {
                         ?>
-                                 <a href="Quick.php?pid=<?= $fetch_products['id']; ?>" class="swiper-slide slide">
-                                
+                                <a href="Quick.php?pid=<?= $fetch_products['id']; ?>" class="swiper-slide slide">
+
                                     <div class="product-card">
                                         <img src="uploaded_img/<?= $fetch_products['image']; ?>">
                                         <div class="product-card-price">
@@ -133,8 +138,8 @@ include './Components/add_cart.php';
                                             <p><?= $fetch_products['description']; ?></p>
                                         </div>
                                     </div>
-                               
-                                 </a>
+
+                                </a>
                         <?php
                             }
                         } else {
@@ -144,6 +149,9 @@ include './Components/add_cart.php';
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
+                <center>
+                    <a href="/Category.php" class="btn">View all</a>
+                </center>
             </div>
         </section>
         <section class="deal">
@@ -157,14 +165,21 @@ include './Components/add_cart.php';
                 <a href="./Reservation.php" class="btn">Book Now</a>
             </div>
         </section>
+        <section class="newsletter">
+            <div class="content">
+                <h1 class="heading">subscirbe now</h1>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam ipsam repellat nostrum esse officiis unde quisquam corporis doloremque adipisci similique!</p>
+                <form action="./Components/New.php" method="POST">
+                    <input type="email" name="subscribe" placeholder="enter your email" id="" class="email">
+                    <input type="submit" value="subscirbe" class="btn" name="sub">
+                </form>
+            </div>
+        </section>
     </div>
-
     <?php include 'Components/Footer.php'; ?>
-
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
     <!-- custom js file link  -->
     <script src="/Js/js.js"></script>
-
     <script>
         var swiper = new Swiper(".hero-slider", {
             loop: true,

@@ -1365,7 +1365,7 @@ div {
   flex: 1 1 42rem;
   -webkit-box-flex: 1;
   -ms-flex: 1 1 42rem;
-  margin-top: 2850px;
+  margin-top: 2950px;
 }
 
 .deal .content span {
@@ -2097,4 +2097,57 @@ select {
 
 .message i:hover{
   color:var(--black);
+}
+
+
+.newsletter {
+  height: 350px;
+}
+
+.newsletter .content {
+  max-width: 70rem;
+  margin: 1rem auto;
+  text-align: center;
+  position: relative;
+  margin-top: -250px;
+  justify-content: center;
+  margin-left: -400px;
+}
+
+.newsletter .content p {
+  font-size: 1.5rem;
+  line-height: 2;
+  color: #10221b;
+}
+
+.newsletter .content form {
+  margin-top: 2rem;
+  background: #fff;
+  border-radius: 5rem;
+  border: 0.2rem solid #10221b;
+  padding: .7rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.newsletter .content form .email {
+  width: 100%;
+  background: none;
+  text-transform: none;
+  font-size: 1.6rem;
+  color: #10221b;
+  padding: 0 1.3rem;
+}
+
+.newsletter .content form .btn {
+  margin-top: 0;
+  border-radius: 5rem;
+  background: #10221b;
+  color: #fff;
+}
+
+.newsletter .content form .btn:hover {
+  background: none;
+  color: #10221b;
 }

@@ -6,7 +6,7 @@
         <a href="/About.php">About</a>
         <a href="/Menu.php">Menu</a>
         <a href="/Category.php">Category</a>
-        <a href="/Order.php">Orders</a>
+        <a href="/Reservation.php">Booking</a>
         <a href="/Contact.php">Contact</a>
     </nav>
     <div class="icons">
