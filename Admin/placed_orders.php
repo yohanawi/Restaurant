@@ -49,7 +49,7 @@ if (isset($_GET['delete'])) {
    <link href="css/colors/blue.css" id="theme" rel="stylesheet">
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
- <link href="css/admin-css.css" rel="stylesheet">
+   <link href="css/admin-css.css" rel="stylesheet">
 </head>
 
 <body>

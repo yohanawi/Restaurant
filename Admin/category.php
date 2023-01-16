@@ -144,7 +144,9 @@ if (isset($_GET['delete'])) {
                                     ?>
                                             <div class="box-category">
                                                 <img src="../uploaded_img/<?= $fetch_category['image']; ?>" alt="">
-                                                <center><div class="category"><?= $fetch_category['category']; ?></div></center>
+                                                <center>
+                                                    <div class="category"><?= $fetch_category['category']; ?></div>
+                                                </center>
                                                 <div class="flex-btn">
                                                     <a href="category.php?delete=<?= $fetch_category['id']; ?>" class="delete-btn" onclick="return confirm('delete this category?');">delete</a>
                                                 </div>

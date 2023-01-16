@@ -3,7 +3,6 @@ require_once "components/connection.php"; //databse connection
 
 require_once "functions/db.php";
 
-
 $sql_message = "SELECT * FROM messages";
 $query_message = mysqli_query($connection, $sql_message);
 

@@ -16,4 +16,3 @@
     else {
         header('Location:../message.php?del_error');
     }
-?>

@@ -17,4 +17,3 @@
         die('Cannot Establish A Secure Connection To The Host Server At The Moment!');
     }
     /*DATABASE CONNECTION */
-?>

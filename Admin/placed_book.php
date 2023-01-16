@@ -18,7 +18,7 @@ if (isset($_GET['delete'])) {
     $delete_book = $conn->prepare("DELETE FROM `book` WHERE id = ?");
     $delete_book->execute([$delete_id]);
     header('location:placed_book.php');
- }
+}
 ?>
 
 <!DOCTYPE html>
@@ -112,7 +112,6 @@ if (isset($_GET['delete'])) {
                         </div>
                     </div>
                 </div>
-               
                 <!-- /.row -->
                 <!-- .right-sidebar -->
                 <?php include './components/sidebar.php'; ?>

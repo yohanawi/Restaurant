@@ -103,7 +103,6 @@ if (isset($_GET['id'])) {
                         </div>
                     </div>
                 </div>
-
                 <!-- /.row -->
                 <!-- .right-sidebar -->
                 <?php include './components/sidebar.php'; ?>

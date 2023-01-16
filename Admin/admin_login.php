@@ -1,4 +1,5 @@
 <?php
+ob_start();
 require_once "components/connection.php"; //databse connection
 session_start();
 if (isset($_POST['submit'])) {
@@ -74,7 +75,7 @@ if (isset($_POST['submit'])) {
          <p>default username = <span>admin</span> & password = <span>111</span></p>
          <input type="text" name="name" maxlength="20" required placeholder="enter your username" class="box" oninput="this.value = this.value.replace(/\s/g, '')">
          <input type="password" name="pass" maxlength="20" required placeholder="enter your password" class="box" oninput="this.value = this.value.replace(/\s/g, '')">
-         <input type="submit" value="login now" name="submit" class="btn">
+         <input type="submit" value="login now" name="submit" class="btn1">
       </form>
    </section>
    <!-- /#wrapper -->

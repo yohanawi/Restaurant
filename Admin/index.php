@@ -1,5 +1,5 @@
 <?php
-
+ob_start();
 require_once "functions/db.php";
 session_start();
 
@@ -131,6 +131,88 @@ $query_book = mysqli_query($connection, $sql_book);
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-lg-6 col-sm-12">
+                        <div class="white-box">
+                            <div id="myChart2" style="width:100%; max-width:600px; height:500px;"></div>
+                            <?php
+                            $chkresults2 = mysqli_query($connection, "SELECT date(date) AS date, COUNT(*) AS id FROM subscribe GROUP BY date(date)");
+                            ?>
+                            <script>
+                                google.charts.load('current', {
+                                    packages: ['corechart']
+                                });
+                                google.charts.setOnLoadCallback(drawChart2);
+
+                                function drawChart2() {
+                                    // Set Data
+                                    var data = google.visualization.arrayToDataTable([
+                                        ['Date', 'Subscribe'],
+                                        <?php
+                                        while ($row = mysqli_fetch_assoc($chkresults2)) {
+                                            echo "['" . $row["date"] . "'," . $row["id"] . "],";
+                                        }
+                                        ?>
+                                    ]);
+                                    // Set OptionsS
+                                    var options = {
+                                        title: 'Subscribers',
+                                        hAxis: {
+                                            title: 'Date'
+                                        },
+                                        vAxis: {
+                                            title: 'ID'
+                                        },
+                                        legend: 'none'
+                                    };
+                                    // Draw
+                                    var chart = new google.visualization.LineChart(document.getElementById('myChart2'));
+                                    chart.draw(data, options);
+                                }
+                            </script>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-6 col-sm-12">
+                        <div class="white-box">
+                            <?php
+                            $chkresults = mysqli_query($connection, "SELECT date(date) AS date, COUNT(*) AS number FROM orders GROUP BY date(date)");
+                            ?>
+                            <script type="text/javascript">
+                                google.charts.load('current', {
+                                    'packages': ['Bar']
+                                });
+                                google.charts.setOnLoadCallback(drawChart);
+
+                                function drawChart() {
+                                    var data = google.visualization.arrayToDataTable([
+                                        ['Date', 'Number'],
+                                        <?php
+                                        while ($row = mysqli_fetch_assoc($chkresults)) {
+                                            echo "['" . $row["placed_on"] . "'," . $row["number"] . "],";
+                                        }
+                                        ?>
+                                    ]);
+                                    var options = {
+                                        chart: {
+                                            title: '',
+                                        },
+                                        bars: 'vertical',
+                                        vAxis: {
+                                            format: 'decimal'
+                                        },
+                                        height: 300,
+                                        colors: ['#d95f02']
+                                    };
+                                    var chart = new google.charts.Bar(document.getElementById('bar-graph-location'));
+                                    chart.draw(data, google.charts.Bar.convertOptions(options));
+                                }
+                            </script>
+                            <!--location where bar graph will be displayed-->
+                            <div id="bar-graph-location">
                             </div>
                         </div>
                     </div>
