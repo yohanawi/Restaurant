@@ -46,7 +46,6 @@ include './Components/add_cart.php';
                             <br /><br />
                             <a href="/Menu.php" class="btn-menu">Menu</a>
                             <a href="/Reservation.php" class="btn-book">Book a table</a>
-
                         </div>
                     </div>
                 </div>
@@ -95,7 +94,7 @@ include './Components/add_cart.php';
                 </center>
             </div>
         </section>
-        <section style="justify-content: center;">
+        <section>
             <center>
                 <div class="about-content">
                     <div class="image-about">
