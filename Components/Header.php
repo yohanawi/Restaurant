@@ -16,7 +16,7 @@
         $total_cart_items = $count_cart_items->rowCount();
         ?>
         <div id="menu-btn" class="fas fa-bars"></div>
-        <a href="/Cart.php" class="fas fa-shopping-cart" style="width: 24px; margin-left: 150px"><span>(<?= $total_cart_items; ?>)</span></a>
+        <a href="/Cart.php" class="fas fa-shopping-cart" style="width: 24px; margin-left: 150px"><span>(<?= $total_cart_items; ?>)</span></a>&nbsp;&nbsp;
         <div id="user-btn" class="fas fa-user"></div>
         <div id="search-btn"></div>
     </div>
