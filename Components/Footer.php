@@ -33,7 +33,7 @@
             <a href="#">Sunday CLOSED</a>
         </div>
     </div>
-    <div class="credit"><i class="fa-regular fa-copyright"></i> 2023 Restaurants. All Right Reserved. Designed by yohan <a href="#" style="margin-left: 650px;"> Terms of Service </a><a href="#" style="margin-left: 40px;"> Privacy Policy</a></div>
+    <div class="credit"><i class="fa-regular fa-copyright"></i> 2023 Restaurants. All Right Reserved. Designed by yohan <a href="#" style="margin-left: 500px;"> Terms of Service </a><a href="#" style="margin-left: 40px;"> Privacy Policy</a></div>
 </div>
 
 <!-- footer section ends -->
