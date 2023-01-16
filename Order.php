@@ -38,11 +38,8 @@ if (isset($_SESSION['user_id'])) {
                 <p></p>
             </div>
         </div>
-        <section class="orders">
-
-
+        <div class="orders">
             <div class="box-container">
-
                 <?php
                 if ($user_id == '') {
                     echo '<p class="empty">please login to see your orders</p>';
@@ -74,10 +71,8 @@ if (isset($_SESSION['user_id'])) {
                     }
                 }
                 ?>
-
             </div>
-
-        </section>
+            </div>
     </section>
 
     <?php include 'Components/Footer.php'; ?>

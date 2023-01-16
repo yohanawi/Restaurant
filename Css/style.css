@@ -2067,13 +2067,13 @@ select {
 }
 
 .checkout form .cart-items {
-  background-color: var(--black);
+  background-color: var(--main-background);
   padding: 2rem;
   padding-top: 0;
 }
 
 .checkout form .cart-items h3 {
-  color: var(--white);
+  color: var(--black);
 }
 
 .checkout form .cart-items p {

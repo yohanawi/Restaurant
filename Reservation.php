@@ -10,7 +10,7 @@ if (isset($_SESSION['user_id'])) {
     header('location:index.php');
 };
 
-if(isset($_POST['book'])){
+if (isset($_POST['book'])) {
 
     $name = $_POST['name'];
     $name = filter_var($name, FILTER_SANITIZE_STRING);
@@ -27,19 +27,17 @@ if(isset($_POST['book'])){
 
     $select_book = $conn->prepare("SELECT * FROM `book` WHERE user_id = ?");
     $select_book->execute([$user_id]);
- 
-    if($select_book->rowCount() > 0){
-       $book[] = 'already sent book!';
-    }else{
- 
-       $insert_book = $conn->prepare("INSERT INTO `book`(user_id,name, number, tables, seat, time, date) VALUES(?,?,?,?,?,?,?)");
-       $insert_book->execute([$user_id, $name, $number, $tables, $seat, $time, $date]);
- 
-       $book[] = 'sent book successfully!';
- 
+
+    if ($select_book->rowCount() > 0) {
+        $book[] = 'already sent book!';
+    } else {
+
+        $insert_book = $conn->prepare("INSERT INTO `book`(user_id,name, number, tables, seat, time, date) VALUES(?,?,?,?,?,?,?)");
+        $insert_book->execute([$user_id, $name, $number, $tables, $seat, $time, $date]);
+
+        $book[] = 'sent book successfully!';
     }
- 
- }
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -110,7 +108,7 @@ if(isset($_POST['book'])){
                 </center>
                 <a href="view-reservation.php">View Booking</a>
             </form>
-           <div class="video">
+            <div class="video">
                 <video autoplay muted loop id="myVideo">
                     <source src="/video/tables.mp4" type="video/mp4">
                 </video>

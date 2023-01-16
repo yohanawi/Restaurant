@@ -2,30 +2,26 @@
 include 'Components/connection.php';
 session_start();
 
-if(isset($_SESSION['user_id'])){
-   $user_id = $_SESSION['user_id'];
-}else{
-   $user_id = '';
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+} else {
+    $user_id = '';
 };
 
-if(isset($_POST['send'])){
-
-   $email = $_POST['email'];
-   $email = filter_var($email, FILTER_SANITIZE_STRING);
-   $password = sha1($_POST['password']);
-   $password = filter_var($password, FILTER_SANITIZE_STRING);
-
-   $select_user = $conn->prepare("SELECT * FROM `user` WHERE email = ? AND password = ?");
-   $select_user->execute([$email, $password]);
-   $row = $select_user->fetch(PDO::FETCH_ASSOC);
-
-   if($select_user->rowCount() > 0){
-      $_SESSION['user_id'] = $row['id'];
-      header('location:index.php');
-   }else{
-      $message[] = 'incorrect username or password!';
-   }
-
+if (isset($_POST['send'])) {
+    $email = $_POST['email'];
+    $email = filter_var($email, FILTER_SANITIZE_STRING);
+    $password = sha1($_POST['password']);
+    $password = filter_var($password, FILTER_SANITIZE_STRING);
+    $select_user = $conn->prepare("SELECT * FROM `user` WHERE email = ? AND password = ?");
+    $select_user->execute([$email, $password]);
+    $row = $select_user->fetch(PDO::FETCH_ASSOC);
+    if ($select_user->rowCount() > 0) {
+        $_SESSION['user_id'] = $row['id'];
+        header('location:index.php');
+    } else {
+        $message[] = 'incorrect username or password!';
+    }
 }
 
 ?>
@@ -67,7 +63,9 @@ if(isset($_POST['send'])){
                 </div>
                 <div class="link">Don’t Have a Account |<a href="Register.php"> Register ?</a></div>
             </div>
-            <center><div class="vl"></div></center>
+            <center>
+                <div class="vl"></div>
+            </center>
             <div class="left-box">
                 <form action="" method="POST">
                     <div class="inputBox">

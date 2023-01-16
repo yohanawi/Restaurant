@@ -63,7 +63,7 @@ $grand_total = 0;
                 <p></p>
             </div>
         </div>
-        <section class="products">
+        <div class="products">
             <div class="box-container">
                 <?php
                 $grand_total = 0;
@@ -79,11 +79,11 @@ $grand_total = 0;
                             <img src="uploaded_img/<?= $fetch_cart['image']; ?>" alt="">
                             <div class="name"><?= $fetch_cart['name']; ?></div>
                             <div class="flex">
-                                <div class="price"><span>$</span><?= $fetch_cart['price']; ?></div>
+                                <div class="price"><span>Rs. </span><?= $fetch_cart['price']; ?></div>
                                 <input type="number" name="qty" class="qty" min="1" max="99" value="<?= $fetch_cart['quantity']; ?>" maxlength="2">
                                 <button type="submit" class="fas fa-edit" name="update_qty"></button>
                             </div>
-                            <div class="sub-total"> sub total : <span>$<?= $sub_total = ($fetch_cart['price'] * $fetch_cart['quantity']); ?>/-</span> </div>
+                            <div class="sub-total"> sub total : <span>Rs. <?= $sub_total = ($fetch_cart['price'] * $fetch_cart['quantity']); ?>/-</span> </div>
                         </form>
                 <?php
                         $grand_total += $sub_total;
@@ -92,21 +92,18 @@ $grand_total = 0;
                     echo '<center><p class="empty">your cart is empty</p></center>';
                 }
                 ?>
-
             </div>
-
             <div class="cart-total">
-                <p>cart total : <span>$<?= $grand_total; ?></span></p>
+                <p>cart total : <span>Rs.<?= $grand_total; ?></span></p>
                 <a href="checkout.php" class="btn4 <?= ($grand_total > 1) ? '' : 'disabled'; ?>">proceed to checkout</a>
             </div>
-
             <div class="more-btn">
                 <form action="" method="post">
                     <button type="submit" class="delete-btn <?= ($grand_total > 1) ? '' : 'disabled'; ?>" name="delete_all" onclick="return confirm('delete all from cart?');">delete all</button>
                 </form>
                 <a href="Menu.php" class="btn4">continue shopping</a>
             </div>
-        </section>
+        </div>
     </section>
 
     <?php include 'Components/Footer.php'; ?>

@@ -68,7 +68,7 @@ include './Components/add_cart.php';
                                 <div class="details"><?= $fetch_product['description']; ?></div>
                                 <div class="flex-btn">
                                     <input type="submit" value="add to cart" class="btn3" name="add_to_cart">
-                                    
+
                                 </div>
                             </div>
                         </div>

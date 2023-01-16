@@ -27,24 +27,23 @@ if (isset($_SESSION['user_id'])) {
     $user_id = '';
 };
 
-if(isset($_POST['send']))
-    {
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-        $subject = $_POST['subject'];
-        $msg = $_POST['msg'];
-        //-- Insert Data Into DB --//
-        $sql = "INSERT INTO messages (name,email,subject,msg) 
+if (isset($_POST['send'])) {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $subject = $_POST['subject'];
+    $msg = $_POST['msg'];
+    //-- Insert Data Into DB --//
+    $sql = "INSERT INTO messages (name,email,subject,msg) 
         VALUES (?,?,?,?)";
-        $stmt = $db->prepare($sql);
-        try {
-            $stmt->execute([$name,$email,$subject,$msg]);
-            header('Location:../Contact.php?success');
-        } catch (Exception $e) {
-            $e->getMessage();
-            echo "Error";
-        }
+    $stmt = $db->prepare($sql);
+    try {
+        $stmt->execute([$name, $email, $subject, $msg]);
+        header('Location:../Contact.php?success');
+    } catch (Exception $e) {
+        $e->getMessage();
+        echo "Error";
     }
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -89,7 +88,7 @@ if(isset($_POST['send']))
                 </div>
                 <!--<input type="submit" value="send message" name="send" class="btn">-->
                 <center>
-                <input type="submit" value="send message" name="send" class="btn">
+                    <input type="submit" value="send message" name="send" class="btn">
                 </center>
             </form>
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2283.146426885366!2d80.02078967705012!3d7.2247423166488804!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xbdb19775896da9ff!2zN8KwMTMnMjkuMSJOIDgwwrAwMScyMi43IkU!5e1!3m2!1sen!2sin!4v1657437780916!5m2!1sen!2sin" width="640" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>

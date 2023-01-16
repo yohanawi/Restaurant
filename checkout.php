@@ -90,10 +90,8 @@ if (isset($_POST['submit'])) {
          }
       }
       ?>
-      <section class="checkout">
-
+      <div class="checkout">
          <form action="" method="post">
-
             <div class="cart-items">
                <h3>cart items</h3>
                <?php
@@ -107,24 +105,22 @@ if (isset($_POST['submit'])) {
                      $total_products = implode($cart_items);
                      $grand_total += ($fetch_cart['price'] * $fetch_cart['quantity']);
                ?>
-                     <p><span class="name"><?= $fetch_cart['name']; ?></span><span class="price">$<?= $fetch_cart['price']; ?> x <?= $fetch_cart['quantity']; ?></span></p>
+                     <p><span class="name"><?= $fetch_cart['name']; ?></span><span class="price">Rs. <?= $fetch_cart['price']; ?> x <?= $fetch_cart['quantity']; ?></span></p>
                <?php
                   }
                } else {
                   echo '<p class="empty">your cart is empty!</p>';
                }
                ?>
-               <p class="grand-total"><span class="name">grand total :</span><span class="price">$<?= $grand_total; ?></span></p>
+               <p class="grand-total"><span class="name">grand total :</span><span class="price">Rs. <?= $grand_total; ?></span></p>
                <a href="cart.php" class="btn">veiw cart</a>
             </div>
-
             <input type="hidden" name="total_products" value="<?= $total_products; ?>">
             <input type="hidden" name="total_price" value="<?= $grand_total; ?>" value="">
             <input type="hidden" name="name" value="<?= $fetch_profile['name'] ?>">
             <input type="hidden" name="number" value="<?= $fetch_profile['number'] ?>">
             <input type="hidden" name="email" value="<?= $fetch_profile['email'] ?>">
             <input type="hidden" name="address" value="<?= $fetch_profile['address'] ?>">
-
             <div class="user-info">
                <h3>your info</h3>
                <p><i class="fas fa-user"></i><span><?= $fetch_profile['name'] ?></span></p>
@@ -152,9 +148,8 @@ if (isset($_POST['submit'])) {
                                                                         } ?>" style="width:100%; background:var(--red); color:var(--white);" name="submit">
                </div>
             </div>
-
          </form>
-      </section>
+      </div>
    </section>
 
    <?php include 'Components/Footer.php'; ?>

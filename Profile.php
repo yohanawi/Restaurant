@@ -38,11 +38,9 @@ if (isset($_SESSION['user_id'])) {
                 <p></p>
             </div>
         </div>
-        <section class="user-details">
-
+        <div class="user-details">
             <div class="user">
                 <?php
-
                 ?>
                 <img src="images/user-icon.png" alt="">
                 <p><i class="fas fa-user"></i><span><span><?= $fetch_profile['name']; ?></span></span></p>
@@ -56,8 +54,7 @@ if (isset($_SESSION['user_id'])) {
                                                                                 } ?></span></p>
                 <a href="update_address.php" class="btn">update address</a>
             </div>
-
-        </section>
+        </div>
     </section>
 
     <?php include 'Components/Footer.php'; ?>

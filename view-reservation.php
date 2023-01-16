@@ -77,7 +77,6 @@ if (isset($_SESSION['user_id'])) {
                     </svg>
                     <span>Back</span>
                 </button></a>
-
             <!--<form action="" method="post">
                 <input type="hidden" name="user_id" value="<?= $fetch_book['id']; ?>">
                 <button class="noselect" name="cancel" onclick="return confirm('delete this item?');"><span class="text">Delete</span>

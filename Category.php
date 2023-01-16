@@ -36,7 +36,7 @@ if (isset($_SESSION['user_id'])) {
                 <p>All our best meals in one delicious snap</p>
             </div>
         </div>
-        <br/>
+        <br />
         <div class="category-content">
             <div class="box-container">
                 <?php
